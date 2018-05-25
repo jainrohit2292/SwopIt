@@ -1,0 +1,6 @@
+framework module Pods_SwopIt {
+  umbrella header "Pods-SwopIt-umbrella.h"
+
+  export *
+  module * { export * }
+}
