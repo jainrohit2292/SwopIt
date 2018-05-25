@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D28116BCD4924CA2236BAD8 /* Pods_SwopItUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C237AA200AC66C07A1AA84 /* Pods_SwopItUITests.framework */; };
 		2B166E031E6850100031AB6A /* UpdateProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B166E011E6850100031AB6A /* UpdateProfileViewController.swift */; };
 		2B166E041E6850100031AB6A /* UpdateProfileViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2B166E021E6850100031AB6A /* UpdateProfileViewController.xib */; };
 		2B166E061E6853DF0031AB6A /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2B166E051E6853DF0031AB6A /* CoreLocation.framework */; };
@@ -190,6 +191,7 @@
 		2BF78F9B1EF36C850057F82C /* chat-inactive-tabs.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF78F971EF36C850057F82C /* chat-inactive-tabs.png */; };
 		2BF78F9C1EF36C850057F82C /* swop-list-active-tabs.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF78F981EF36C850057F82C /* swop-list-active-tabs.png */; };
 		7FC772719156BB270FBFF785 /* Pods_SwopIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF73C71AD7611B1ABBDAB01 /* Pods_SwopIt.framework */; };
+		F1BD004B87C9E3E097FFB082 /* Pods_SwopItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE9A60E7460D4E3F8144A2B /* Pods_SwopItTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -210,6 +212,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		072567C8A8CF973580A30D31 /* Pods-SwopItTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwopItTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwopItTests/Pods-SwopItTests.debug.xcconfig"; sourceTree = "<group>"; };
+		1845819D09A9D20A5EC9C60E /* Pods-SwopItUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwopItUITests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwopItUITests/Pods-SwopItUITests.release.xcconfig"; sourceTree = "<group>"; };
 		2B166E011E6850100031AB6A /* UpdateProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateProfileViewController.swift; sourceTree = "<group>"; };
 		2B166E021E6850100031AB6A /* UpdateProfileViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UpdateProfileViewController.xib; sourceTree = "<group>"; };
 		2B166E051E6853DF0031AB6A /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -401,7 +405,11 @@
 		2BF78F981EF36C850057F82C /* swop-list-active-tabs.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "swop-list-active-tabs.png"; sourceTree = "<group>"; };
 		3AE0F127A1ACA7DAEFFDEC8D /* Pods-SwopIt.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwopIt.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwopIt/Pods-SwopIt.release.xcconfig"; sourceTree = "<group>"; };
 		52A0F5C5313DE6C5955AB1D0 /* Pods-SwopIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwopIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwopIt/Pods-SwopIt.debug.xcconfig"; sourceTree = "<group>"; };
+		5D18B3B355E9B195DC5EFD02 /* Pods-SwopItUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwopItUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwopItUITests/Pods-SwopItUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9DF73C71AD7611B1ABBDAB01 /* Pods_SwopIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwopIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A7354D3CDB9AD2705A2C6C12 /* Pods-SwopItTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwopItTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwopItTests/Pods-SwopItTests.release.xcconfig"; sourceTree = "<group>"; };
+		E5C237AA200AC66C07A1AA84 /* Pods_SwopItUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwopItUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		FFE9A60E7460D4E3F8144A2B /* Pods_SwopItTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwopItTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -421,6 +429,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1BD004B87C9E3E097FFB082 /* Pods_SwopItTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -428,6 +437,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1D28116BCD4924CA2236BAD8 /* Pods_SwopItUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -803,6 +813,8 @@
 				2B83C3F31E79D15F00B329ED /* CoreImage.framework */,
 				2B166E051E6853DF0031AB6A /* CoreLocation.framework */,
 				9DF73C71AD7611B1ABBDAB01 /* Pods_SwopIt.framework */,
+				FFE9A60E7460D4E3F8144A2B /* Pods_SwopItTests.framework */,
+				E5C237AA200AC66C07A1AA84 /* Pods_SwopItUITests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -812,6 +824,10 @@
 			children = (
 				52A0F5C5313DE6C5955AB1D0 /* Pods-SwopIt.debug.xcconfig */,
 				3AE0F127A1ACA7DAEFFDEC8D /* Pods-SwopIt.release.xcconfig */,
+				072567C8A8CF973580A30D31 /* Pods-SwopItTests.debug.xcconfig */,
+				A7354D3CDB9AD2705A2C6C12 /* Pods-SwopItTests.release.xcconfig */,
+				5D18B3B355E9B195DC5EFD02 /* Pods-SwopItUITests.debug.xcconfig */,
+				1845819D09A9D20A5EC9C60E /* Pods-SwopItUITests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -844,6 +860,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2B93A3DC1E5077BA00E8764F /* Build configuration list for PBXNativeTarget "SwopItTests" */;
 			buildPhases = (
+				818228B9C25AE886FD3A98F4 /* [CP] Check Pods Manifest.lock */,
 				2B93A3C11E5077BA00E8764F /* Sources */,
 				2B93A3C21E5077BA00E8764F /* Frameworks */,
 				2B93A3C31E5077BA00E8764F /* Resources */,
@@ -862,6 +879,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 2B93A3DF1E5077BA00E8764F /* Build configuration list for PBXNativeTarget "SwopItUITests" */;
 			buildPhases = (
+				FC49E1D0DBED0088423F5739 /* [CP] Check Pods Manifest.lock */,
 				2B93A3CC1E5077BA00E8764F /* Sources */,
 				2B93A3CD1E5077BA00E8764F /* Frameworks */,
 				2B93A3CE1E5077BA00E8764F /* Resources */,
@@ -1106,13 +1124,48 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SwopIt/Pods-SwopIt-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework",
+				"${BUILT_PRODUCTS_DIR}/Cosmos/Cosmos.framework",
+				"${BUILT_PRODUCTS_DIR}/FloatRatingView/FloatRatingView.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQMessagesViewController/JSQMessagesViewController.framework",
+				"${BUILT_PRODUCTS_DIR}/JSQSystemSoundPlayer/JSQSystemSoundPlayer.framework",
+				"${BUILT_PRODUCTS_DIR}/MBProgressHUD/MBProgressHUD.framework",
+				"${BUILT_PRODUCTS_DIR}/NSDate+TimeAgo/NSDate_TimeAgo.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Alamofire.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Cosmos.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/FloatRatingView.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQMessagesViewController.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/JSQSystemSoundPlayer.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MBProgressHUD.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/NSDate_TimeAgo.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SwopIt/Pods-SwopIt-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		818228B9C25AE886FD3A98F4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwopItTests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		C13DADCCA3915B9DD5AE1091 /* [CP] Check Pods Manifest.lock */ = {
@@ -1121,13 +1174,34 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwopIt-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		FC49E1D0DBED0088423F5739 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-SwopItUITests-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		FEB0720FB30E31FE8CBE76C0 /* [CP] Copy Pods Resources */ = {
@@ -1136,9 +1210,14 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-SwopIt/Pods-SwopIt-resources.sh",
+				"${PODS_ROOT}/GoogleMaps/Subspecs/Maps/Frameworks/GoogleMaps.framework/Versions/A/Resources/GoogleMaps.bundle",
+				"${PODS_ROOT}/GooglePlaces/Frameworks/GooglePlaces.framework/Versions/A/Resources/GooglePlaces.bundle",
 			);
 			name = "[CP] Copy Pods Resources";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GoogleMaps.bundle",
+				"${TARGET_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/GooglePlaces.bundle",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
@@ -1390,6 +1469,7 @@
 		};
 		2B93A3DD1E5077BA00E8764F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 072567C8A8CF973580A30D31 /* Pods-SwopItTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1404,6 +1484,7 @@
 		};
 		2B93A3DE1E5077BA00E8764F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A7354D3CDB9AD2705A2C6C12 /* Pods-SwopItTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -1418,6 +1499,7 @@
 		};
 		2B93A3E01E5077BA00E8764F /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5D18B3B355E9B195DC5EFD02 /* Pods-SwopItUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = SwopItUITests/Info.plist;
@@ -1431,6 +1513,7 @@
 		};
 		2B93A3E11E5077BA00E8764F /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1845819D09A9D20A5EC9C60E /* Pods-SwopItUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				INFOPLIST_FILE = SwopItUITests/Info.plist;
