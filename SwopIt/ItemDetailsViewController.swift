@@ -77,7 +77,8 @@ class ItemDetailsViewController: UIViewController, UICollectionViewDelegate, UIC
         self.postedDateLbl.text = dateStr
         self.profileImageV.layer.cornerRadius = self.profileImageV.frame.width/2
         self.profileImageV.clipsToBounds = true
-        self.profileImageV.sd_setImage(with: URL(string: (item?.user?.profilePictureUrl!)!), placeholderImage: UIImage(named:"profile_placeholder"))
+        let profilePic = Constants.GET_PROFILE_PIC_URL + (item?.user?.profilePictureUrl)!
+        self.profileImageV.sd_setImage(with: URL(string: profilePic), placeholderImage: UIImage(named:"profile_placeholder"))
         self.updateMap()
     }
 

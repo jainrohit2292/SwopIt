@@ -115,7 +115,6 @@ class SignupViewController: UIViewController {
     @IBAction func usernameDidEndEditing(_ sender: Any) {
         let params = ["Username": usernameTextField.text!]
         Utils.httpCall(url: Constants.CHECK_USER_AVAILABILITY_URL, params: params as [String : AnyObject]?, httpMethod: "POST") { (resp) in
-            print("Response \(resp)")
             if((resp?["ResponseCode"] as! Int) == 1){
                 self.usernameAvailable = true
             }
@@ -265,10 +264,10 @@ class SignupViewController: UIViewController {
         let locLat = Float(Utils.getUserLocationFromPrefs().latitude)
         let locLong = Float(Utils.getUserLocationFromPrefs().longitude)
         
-        if(locLat == 0 && locLong == 0){
-            SwopItLocationManager.getInstance().requestLocationUpdate()
-            Utils.showAlert(title: "SwopIt", msg: "Please turn on GPS to get location and try again", vc: self)
-        }
+//        if(locLat == 0 && locLong == 0){
+//            SwopItLocationManager.getInstance().requestLocationUpdate()
+//            Utils.showAlert(title: "SwopIt", msg: "Please turn on GPS to get location and try again", vc: self)
+//        }
         if(!self.isEmailValid()){
             Utils.showAlert(title: "SwopIt", msg: "Please enter a valid email address.", vc: self)
             return

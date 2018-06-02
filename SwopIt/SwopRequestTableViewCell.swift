@@ -70,6 +70,7 @@ class SwopRequestTableViewCell: UITableViewCell {
         self.dateLbl.text = self.getFormattedDateStr(date: dt)
         if((swopRequest.senderItems?.count)! > 0){
         if((swopRequest.senderItems?[0].urls.count)! > 0){
+            
             url = (swopRequest.senderItems?[0].urls[0])!
         }
         self.itemImageV.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named:"placeholder"))

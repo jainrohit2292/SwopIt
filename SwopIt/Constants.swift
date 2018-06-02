@@ -9,10 +9,11 @@
 import UIKit
 
 class Constants: NSObject {
-    static let BASE_URL = "http://swopitapp.azurewebsites.net/AlbertoMollWCF.svc/"
+    static let BASE_URL = "http://swopitapp1.azurewebsites.net/api/AlbertoMoll/"
     static let AUTHENTICATION_URL = BASE_URL + "Login"
     static let REGISTRATION_URL = BASE_URL + "AddUser"
     static let UPLOAD_PROFILE_PIC_URL = BASE_URL + "UploadProfilePicture"
+    static let GET_PROFILE_PIC_URL = "http://swopitapp1.azurewebsites.net/Attachments/userprofilepics/"
     static let CHECK_USER_AVAILABILITY_URL = BASE_URL + "UserAvailablity"
     static let GET_ITEM_BY_USER_ID_URL = BASE_URL + "GetItemsByUser"
     static let ADD_ITEM_URL = BASE_URL +  "AddItem"
@@ -20,7 +21,7 @@ class Constants: NSObject {
     static let GET_ALL_CATEGORIES_URL = BASE_URL + "GetCategories"
     static let UPLOAD_ITEM_IMAGE = BASE_URL + "UploadItemImage"
     static let GET_ITEM_DETAIL_BY_ID = BASE_URL + "ItemById"
-    static let DOWNLOAD_ITEM_IMAGE_URL = BASE_URL + "DownloadItemImage"
+    static let DOWNLOAD_ITEM_IMAGE_URL = "http://swopitapp1.azurewebsites.net/Attachments/Items/"
     static let GET_USER_DETAILS_BY_ID = BASE_URL + "UserById"
     static let GET_ITEM_BY_DISTANCE = BASE_URL + "ItemsByDistance"
     static let GET_ITEM_BY_SEARCH = BASE_URL + "ItemsBySearch"

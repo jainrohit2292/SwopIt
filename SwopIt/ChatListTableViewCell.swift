@@ -25,7 +25,7 @@ class ChatListTableViewCell: UITableViewCell {
         
     }
     func updateCell(user: User){
-        let picUrl = URL(string: user.profilePictureUrl!)
+        let picUrl = URL(string: Constants.GET_PROFILE_PIC_URL + user.profilePictureUrl!)
         if(picUrl != nil){
             self.profileImgV.sd_setImage(with: picUrl!, placeholderImage: UIImage(named: "profile_placeholder"))
         }

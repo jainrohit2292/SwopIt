@@ -17,6 +17,7 @@ class ItemDetailImageCollectionViewCell: UICollectionViewCell {
     }
     
     func updateCell(imageUrl: String){
-        self.itemImageV.sd_setImage(with: URL(string: imageUrl), placeholderImage: UIImage(named: "placeholder.png"))
+        let imgUrl = Constants.DOWNLOAD_ITEM_IMAGE_URL + imageUrl
+        self.itemImageV.sd_setImage(with: URL(string: imgUrl), placeholderImage: UIImage(named: "placeholder.png"))
     }
 }

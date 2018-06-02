@@ -11,6 +11,8 @@ import MBProgressHUD
 import CoreImage
 import CoreGraphics
 import PhotosUI
+import Alamofire
+
 class AddItemsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     @IBOutlet weak var itemsTitleView: UIView!
     
@@ -164,17 +166,8 @@ class AddItemsViewController: UIViewController, UICollectionViewDelegate, UIColl
             MBProgressHUD.hide(for: self.view, animated: false)
             if(resp != nil){
                 if((resp?[Constants.KEY_RESPONSE_CODE] as! Int) == 1){
-            self.addedItemId = resp?[Constants.KEY_RESPONSE] as! String
-            
-                    for i in 0...images.count - 1{
-                        self.uploadImg(img: Utils.imageWithImage(image: images[i], scaledToSize: CGSize(width:60, height:60)) , imageNumber: i+1)
-                    }
-            
-//            self.uploadImg(img: Utils.imageWithImage(image: self.itemFirstImageV.image!, scaledToSize: CGSize(width:60, height:60)) , imageNumber: 1)
-//            self.uploadImg(img: Utils.imageWithImage(image: self.itemSecondImageV.image!, scaledToSize: CGSize(width:60, height:60)), imageNumber: 2)
- //           self.uploadImg(img: Utils.imageWithImage(image:self.itemThirdImageV.image!,scaledToSize: CGSize(width:60, height:60)) , imageNumber: 3)
-   //         self.uploadImg(img: Utils.imageWithImage(image: self.fourthImageV.image!,scaledToSize: CGSize(width:60, height:60)), imageNumber: 4)
-     //       self.uploadImg(img: Utils.imageWithImage(image:self.itemFifthImageV.image!, scaledToSize: CGSize(width:60, height:60)), imageNumber: 5)
+                    self.addedItemId = resp?[Constants.KEY_RESPONSE] as! String
+                    self.uploadImg(images: images)
                 }
                 else{
                     Utils.showAlert(title: "SwopIt", msg: "Couldn't add Item. Please try agaian.", vc: self)
@@ -189,12 +182,28 @@ class AddItemsViewController: UIViewController, UICollectionViewDelegate, UIColl
         }
     }
     
-    func uploadImg(img: UIImage, imageNumber: Int){
-        let imgData = UIImagePNGRepresentation(img)
+    func uploadImg(images:[UIImage]){
+        let urlStr = Constants.UPLOAD_ITEM_IMAGE+"/"+self.addedItemId!
         MBProgressHUD.showAdded(to: self.view, animated: false)
-        Utils.uploadBinaryStream(url: Constants.UPLOAD_ITEM_IMAGE+"/"+self.addedItemId!+"/"+String(imageNumber), params: imgData, httpMethod: "POST") { (resp) in
+        
+        Alamofire.upload(multipartFormData: { (multipartFormData) in
+            
+            for i in 0...images.count - 1{
+                let img = Utils.imageWithImage(image: images[i], scaledToSize: CGSize(width:60, height:60))
+                let imgData = UIImagePNGRepresentation(img)
+                multipartFormData.append(imgData!, withName: "journalImg", fileName: "\(i+1).png", mimeType: "image/jpg")
+            }
+        }, to:urlStr)
+        { (result) in
             MBProgressHUD.hide(for: self.view, animated: false)
-            print("Response : \(resp)")
+            switch result {
+            case .success(let upload, _, _):
+                upload.responseJSON { response in
+                     print("Response : \(response)")
+                }
+            case .failure( _):
+                print("Error")
+            }
         }
     }
     

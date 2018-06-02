@@ -11,6 +11,7 @@ import MBProgressHUD
 import CoreGraphics
 import PhotosUI
 import SDWebImage
+import Alamofire
 
 class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, UITableViewDelegate, UITableViewDataSource, IAHelperProtocol, SwopRequestProtocol{
     @IBOutlet weak var itemsAndCategoryView: UIView!
@@ -144,7 +145,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
         self.nameLbl.text = self.user?.username!//Utils.getLoggedInUserName()
         if let profUrl = self.user!.profilePictureUrl{
             print("Profile Url : \(profUrl)")
-            self.profileImageV.sd_setImage(with: URL(string: profUrl), placeholderImage: UIImage(named:"profile_placeholder"))
+            self.profileImageV.sd_setImage(with: URL(string: Constants.GET_PROFILE_PIC_URL + profUrl), placeholderImage: UIImage(named:"profile_placeholder"))
         }
         self.aboutLbl.text = self.user!.about!
     }
@@ -250,20 +251,26 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
                 Utils.showAlert(title: "SwopIt", msg: "Pease connect to network, and try again", vc: self)
                 return
             }
-            let scaledImage = Utils.imageWithImage(image: pickedImage, scaledToSize: CGSize(width: 100, height: 100))
             
-            Utils.uploadBinaryStream(url: Constants.UPLOAD_PROFILE_PIC_URL + "/" + Utils.getLoggedInUserId(), params: UIImagePNGRepresentation(scaledImage), httpMethod: "POST", responseHandler: { (resp) in
+            let urlStr = Constants.UPLOAD_PROFILE_PIC_URL + "/" + Utils.getLoggedInUserId()
+            
+            Alamofire.upload(multipartFormData: { (multipartFormData) in
+                let img = Utils.imageWithImage(image: pickedImage, scaledToSize: CGSize(width: 100, height: 100))
+                let imgData = UIImagePNGRepresentation(img)
+                multipartFormData.append(imgData!, withName: "profileImg", fileName: "profilePic.png", mimeType: "image/jpg")
+            }, to:urlStr)
+            { (result) in
                 MBProgressHUD.hide(for: self.view, animated: false)
-                print("Response : \(resp)")
-                if((resp?[Constants.KEY_RESPONSE_CODE] as! Int) == 1){
-                    Utils.showAlert(title: "SwopIt", msg: "Profile picture uploaded successfully.", vc: self)
-                    self.profileImageV.image = pickedImage
+                switch result {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        Utils.showAlert(title: "SwopIt", msg: "Profile picture uploaded successfully.", vc: self)
+                        self.profileImageV.image = pickedImage
+                    }
+                case .failure( _):
+                    Utils.showAlert(title: "SwopIt", msg: "Uploading Picture Please Error try again.", vc: self)
                 }
-                else{
-                   Utils.showAlert(title: "SwopIt", msg: "Uploading Picture Please Error try again.", vc: self)
-                }
-                
-            })
+            }
             
             picker.dismiss(animated: false, completion: {
                 

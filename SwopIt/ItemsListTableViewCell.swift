@@ -49,7 +49,8 @@ class ItemsListTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColle
         self.profileImgV.layer.cornerRadius = self.profileImgV.frame.width/2
         self.profileImgV.clipsToBounds = true
         if(item.urls.count > 0){
-            self.itemImgV.sd_setImage(with: URL(string:item.urls[0]))
+            let imgUrl = Constants.DOWNLOAD_ITEM_IMAGE_URL + item.urls[0]
+            self.itemImgV.sd_setImage(with: URL(string: imgUrl))
         }
         self.itemDescriptionLbl.text = item.name!
         
@@ -66,7 +67,8 @@ class ItemsListTableViewCell: UITableViewCell, UICollectionViewDelegate, UIColle
         let intVal = Int(floatVal)
         self.distanceLbl.text = String(intVal) + " km"
         if(item.user?.profilePictureUrl != nil){
-            let url = URL(string: (item.user?.profilePictureUrl)!)
+            let profilePic = Constants.GET_PROFILE_PIC_URL + (item.user?.profilePictureUrl)!
+            let url = URL(string: profilePic)
             self.profileImgV.sd_setImage(with: url, placeholderImage: UIImage(named: "profile_placeholder"))
         }
         self.pageControl.numberOfPages = (self.item?.urls.count)!

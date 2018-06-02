@@ -60,7 +60,7 @@ class SwopHistoryTableViewCell: UITableViewCell {
                 url = (swopRequest.senderItems?[0].urls[0])!
             }
             self.itemImageV.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named:"placeholder"))
-            self.profileImgV.sd_setImage(with: URL(string: swopRequest.sender!.profilePictureUrl!), placeholderImage: UIImage(named:"profile_placeholder"))
+            self.profileImgV.sd_setImage(with: URL(string: Constants.GET_PROFILE_PIC_URL + swopRequest.sender!.profilePictureUrl!), placeholderImage: UIImage(named:"profile_placeholder"))
             self.nameLbl.text = swopRequest.sender?.name!
             self.itemNameLbl.text = swopRequest.senderItems?[0].name!
             self.distanceLbl.text = swopRequest.senderItems?[0].distance
@@ -71,7 +71,7 @@ class SwopHistoryTableViewCell: UITableViewCell {
             }
             print("Url : \(url)")
             self.itemImageV.sd_setImage(with: URL(string: url), placeholderImage: UIImage(named:"placeholder.png"))
-            self.profileImgV.sd_setImage(with: URL(string: swopRequest.sender!.profilePictureUrl!), placeholderImage: UIImage(named:"profile_placeholder"))
+            self.profileImgV.sd_setImage(with: URL(string: Constants.GET_PROFILE_PIC_URL + swopRequest.sender!.profilePictureUrl!), placeholderImage: UIImage(named:"profile_placeholder"))
             self.nameLbl.text = swopRequest.sender?.name!
             self.itemNameLbl.text = swopRequest.receiverItems?[0].name!
             //            self.distanceLbl.text = swopRequest.receiverItems?[0].distance!

@@ -331,7 +331,7 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
             return
         }
         MBProgressHUD.showAdded(to: self.view, animated: false)
-        Utils.httpCall(url: Constants.GET_ALL_CATEGORIES_URL, params: nil, httpMethod: "POST") { (resp) in
+        Utils.httpCall(url: Constants.GET_ALL_CATEGORIES_URL, params: nil, httpMethod: "GET") { (resp) in
             MBProgressHUD.hide(for: self.view, animated: false)
             if(resp != nil){
             self.cats = ModelFactory.createCategoriesList(dict: resp!)

@@ -26,7 +26,7 @@ class SwopperTableViewCell: UITableViewCell {
         self.usernameLbl.text = user.username
         self.profileImgV.layer.cornerRadius = self.profileImgV.frame.width/2
         self.profileImgV.clipsToBounds = true
-        let profUrl = URL(string: user.profilePictureUrl!)
+        let profUrl = URL(string: Constants.GET_PROFILE_PIC_URL + user.profilePictureUrl!)
         self.profileImgV.sd_setImage(with: profUrl, placeholderImage: UIImage(named: "profile_placeholder"))
     }
 }
