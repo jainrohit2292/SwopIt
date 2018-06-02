@@ -906,7 +906,7 @@
 				TargetAttributes = {
 					2B93A3AD1E5077B900E8764F = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = QTH8A3VX8J;
+						DevelopmentTeam = 9SJLHL24AD;
 						LastSwiftMigration = 0820;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
@@ -1435,7 +1435,7 @@
 				CODE_SIGN_ENTITLEMENTS = SwopIt/SwopIt.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QTH8A3VX8J;
+				DEVELOPMENT_TEAM = 9SJLHL24AD;
 				INFOPLIST_FILE = SwopIt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -1455,7 +1455,7 @@
 				CODE_SIGN_ENTITLEMENTS = SwopIt/SwopIt.entitlements;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = QTH8A3VX8J;
+				DEVELOPMENT_TEAM = 9SJLHL24AD;
 				INFOPLIST_FILE = SwopIt/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

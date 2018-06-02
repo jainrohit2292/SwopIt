@@ -62,18 +62,12 @@ class SignupViewController: UIViewController {
     }
 
     func register(name: String, username:String, email: String, password: String, mobileNumber: String){
-        //31.472903, 74.297329
-        let lat = 31.472903
-        let lng = 74.297329
-        let params = [Constants.KEY_NAME: name, Constants.KEY_USERNAME:username, Constants.KEY_EMAIL: email, Constants.KEY_PASSWORD:password,Constants.KEY_PHONE:mobileNumber, Constants.KEY_ABOUT:"", Constants.KEY_MORE_INFO:"", Constants.KEY_ADDRESS:self.addressTextField.text!, Constants.KEY_LONGITUDE:String(Utils.getUserLocationFromPrefs().longitude), Constants.KEY_LATITUDE:String(Utils.getUserLocationFromPrefs().latitude)]
-        
-//        let params = [Constants.KEY_NAME: name, Constants.KEY_USERNAME:username, Constants.KEY_EMAIL: email, Constants.KEY_PASSWORD:password,Constants.KEY_PHONE:mobileNumber, Constants.KEY_ABOUT:"", Constants.KEY_MORE_INFO:"", Constants.KEY_ADDRESS:"", Constants.KEY_LONGITUDE:String(lng), Constants.KEY_LATITUDE:String(lat)]
+        let params = [Constants.KEY_NAME: name, Constants.KEY_USERNAME:username, Constants.KEY_EMAIL: email, Constants.KEY_PASSWORD:password,Constants.KEY_PHONE:mobileNumber, Constants.KEY_ABOUT:"", Constants.KEY_MORE_INFO:"", Constants.KEY_ADDRESS:self.addressTextField.text!, Constants.KEY_LONGITUDE:String(Utils.getUserLocationFromPrefs().longitude), Constants.KEY_LATITUDE:String(Utils.getUserLocationFromPrefs().latitude), Constants.KEY_DEVICE_ID:String(Utils.getDeviceId())]
         
         
         MBProgressHUD.showAdded(to: self.view, animated: false)
         Utils.httpCall(url: Constants.REGISTRATION_URL, params: params as [String : AnyObject]?, httpMethod: Constants.HTTP_METHOD_POST) { (resp) in
             MBProgressHUD.hide(for: self.view, animated: false)
-            print("Response : \(resp)")
             if((resp?[Constants.KEY_RESPONSE_CODE] as! Int) == 1){
                 let usr = ModelFactory.createUser(dict: resp!)
                 if(Utils.saveUserToPrefs(user: usr)){

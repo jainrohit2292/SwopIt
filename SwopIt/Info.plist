@@ -2,6 +2,10 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>allow app to access location</string>
+	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
+	<string>Allow app to access current location</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
@@ -41,10 +45,6 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Using Camera</string>
-	<key>NSLocationAlwaysUsageDescription</key>
-	<string>Using Location</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
-	<string>Using Location</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Using photos library</string>
 	<key>UILaunchStoryboardName</key>

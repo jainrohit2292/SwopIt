@@ -170,6 +170,11 @@ class Utils: NSObject {
         }
         return (userId as! String)
     }
+    
+    static func getDeviceId() -> String{
+        return (UIDevice.current.identifierForVendor?.uuidString)!
+    }
+    
     static func getDeviceSize() -> CGSize{
         return UIScreen.main.bounds.size
     }

@@ -62,6 +62,7 @@ class Constants: NSObject {
     static let KEY_LONGITUDE = "Longitude"
     static let KEY_PROFILE_PICTURE = "ProfilePicture"
     static let KEY_URLS = "Urls"
+    static let KEY_DEVICE_ID = "DeviceId"
     
     static let KEY_CATEGORY = "Category"
     static let KEY_CONDITION = "Condition"
