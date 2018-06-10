@@ -154,7 +154,7 @@ class ChatViewController: JSQMessagesViewController  {
                 let chatMsg = ChatMessage(dict: msg)
                 self.chatMessages.append(chatMsg)
                 let formatter = DateFormatter()
-                formatter.dateFormat = "dd MM yyyy hh:mm a"
+                formatter.dateFormat = "dd MMM yyyy HH:mm a"
                 let dateValue = formatter.date(from: chatMsg.dateStr!)
                 let msgg = JSQMessage(senderId: chatMsg.sender , senderDisplayName: "" , date: dateValue, text:chatMsg.message )
                 self.messages.append(msgg!)
@@ -182,7 +182,7 @@ class ChatViewController: JSQMessagesViewController  {
                 let chatMsg = ChatMessage(dict: msg)
                 self.chatMessages.append(chatMsg)
                 let formatter = DateFormatter()
-                formatter.dateFormat = "dd MM yyyy hh:mm a"
+                formatter.dateFormat = "dd MMM yyyy HH:mm a"
                 let dateValue = formatter.date(from: chatMsg.dateStr!)
                 let msgg = JSQMessage(senderId: chatMsg.sender , senderDisplayName: chatMsg.sender , date: dateValue, text:chatMsg.message )
                 self.messages.append(msgg!)
