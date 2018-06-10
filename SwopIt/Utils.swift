@@ -60,6 +60,16 @@ class Utils: NSObject {
         defaults.set(String(val), forKey: Constants.KEY_DISTANCE)
     }
     
+    static func getNewMessageCount() -> String?{
+        let defaults = UserDefaults.standard
+        let dist =  (defaults.value(forKey: Constants.KEY_NEW_MESSAGE_COUNT) as? String)
+        return dist
+    }
+    static func setNewMessageCount(val: Int){
+        let defaults = UserDefaults.standard
+        defaults.set(String(val), forKey: Constants.KEY_NEW_MESSAGE_COUNT)
+    }
+    
     static func upload(url: String, filename: String, image: UIImage, responseHandler: @escaping ([String: AnyObject]?) -> Void){
         
         let scaledImg = Utils.imageWithImage(image: image, scaledToSize: CGSize(width: 100, height: 100))

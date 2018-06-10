@@ -23,6 +23,8 @@ class ChatAndRequestsViewController: UIViewController, ChatDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.initTabViews()
+        Utils.setNewMessageCount(val: 0)
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateMenu"), object: nil)
         // Do any additional setup after loading the view.
     }
 
@@ -47,8 +49,8 @@ class ChatAndRequestsViewController: UIViewController, ChatDelegate {
         let requestsVC = RequestsViewController(nibName: "RequestsViewController", bundle: nil, delegate: self.delegate!, chatDelegate: self)
         let vcsArray = [chatListVC, requestsVC]
         self.tab?.setViewControllers(vcsArray, animated: false)
-        self.tab?.selectedIndex = 1
-        self.segmentControl.selectedSegmentIndex = 1
+        self.tab?.selectedIndex = 0
+        self.segmentControl.selectedSegmentIndex = 0
         self.tabs.addSubview((self.tab?.view)!)
         self.tab?.tabBar.isHidden = true
     }

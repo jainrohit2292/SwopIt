@@ -7,34 +7,34 @@
 	<key>AD_UNIT_ID_FOR_INTERSTITIAL_TEST</key>
 	<string>ca-app-pub-3940256099942544/4411468910</string>
 	<key>CLIENT_ID</key>
-	<string>295942952041-mkvj520d591suq6kasnavnb9ate7lctc.apps.googleusercontent.com</string>
+	<string>796008816047-tnq8i4ihqvl3f8b6rfodd36rq25rmh39.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.295942952041-mkvj520d591suq6kasnavnb9ate7lctc</string>
+	<string>com.googleusercontent.apps.796008816047-tnq8i4ihqvl3f8b6rfodd36rq25rmh39</string>
 	<key>API_KEY</key>
-	<string>AIzaSyB6byuQJYXA11VJmOaCsYEZ_7B86vTQsVU</string>
+	<string>AIzaSyAi_Ps03oTgKwCcW_bTHDOWc82yQ6VGOHs</string>
 	<key>GCM_SENDER_ID</key>
-	<string>295942952041</string>
+	<string>796008816047</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.swopit.SwopIt</string>
+	<string>com.swopit.SwopItLatest</string>
 	<key>PROJECT_ID</key>
-	<string>swopit-49d3e</string>
+	<string>swopit-2ffec</string>
 	<key>STORAGE_BUCKET</key>
-	<string>swopit-49d3e.appspot.com</string>
+	<string>swopit-2ffec.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_ANALYTICS_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_APPINVITE_ENABLED</key>
-	<false/>
+	<false></false>
 	<key>IS_GCM_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>IS_SIGNIN_ENABLED</key>
-	<true/>
+	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:295942952041:ios:71a607a0ca7b2ef6</string>
+	<string>1:796008816047:ios:f438ac44da6595cf</string>
 	<key>DATABASE_URL</key>
-	<string>https://swopit-49d3e.firebaseio.com</string>
+	<string>https://swopit-2ffec.firebaseio.com</string>
 </dict>
 </plist>

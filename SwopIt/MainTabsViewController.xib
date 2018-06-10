@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -157,19 +158,19 @@
                     </constraints>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="u7S-mT-4q4">
-                    <rect key="frame" x="167" y="594" width="40" height="40"/>
+                    <rect key="frame" x="159.5" y="579" width="55" height="55"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="swop_it.png" translatesAutoresizingMaskIntoConstraints="NO" id="nvb-A2-I2v">
-                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Swop" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="39h-Qn-dbH">
-                            <rect key="frame" x="4" y="12" width="32" height="15"/>
+                            <rect key="frame" x="11.5" y="19.5" width="32" height="15"/>
                             <fontDescription key="fontDescription" type="system" pointSize="12"/>
                             <color key="textColor" red="0.0" green="0.59999999999999998" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                             <nil key="highlightedColor"/>
                         </label>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XWR-hg-HzE">
-                            <rect key="frame" x="0.0" y="0.0" width="40" height="40"/>
+                            <rect key="frame" x="0.0" y="0.0" width="55" height="55"/>
                             <connections>
                                 <action selector="addItem:" destination="-1" eventType="touchUpInside" id="ADC-8g-ufR"/>
                             </connections>
@@ -178,12 +179,12 @@
                     <constraints>
                         <constraint firstItem="nvb-A2-I2v" firstAttribute="leading" secondItem="u7S-mT-4q4" secondAttribute="leading" id="0El-Gj-2hT"/>
                         <constraint firstItem="XWR-hg-HzE" firstAttribute="top" secondItem="u7S-mT-4q4" secondAttribute="top" id="4oh-ZS-K5Q"/>
-                        <constraint firstAttribute="width" constant="40" id="747-FQ-W3Q"/>
+                        <constraint firstAttribute="width" constant="55" id="747-FQ-W3Q"/>
                         <constraint firstAttribute="bottom" secondItem="nvb-A2-I2v" secondAttribute="bottom" id="92e-HE-gqr"/>
                         <constraint firstAttribute="trailing" secondItem="nvb-A2-I2v" secondAttribute="trailing" id="Aj0-k7-3nh"/>
                         <constraint firstAttribute="bottom" secondItem="XWR-hg-HzE" secondAttribute="bottom" id="C3z-kw-4mV"/>
                         <constraint firstItem="39h-Qn-dbH" firstAttribute="centerX" secondItem="u7S-mT-4q4" secondAttribute="centerX" id="Lv6-HJ-JUR"/>
-                        <constraint firstAttribute="height" constant="40" id="ND8-4Y-sRy"/>
+                        <constraint firstAttribute="height" constant="55" id="ND8-4Y-sRy"/>
                         <constraint firstItem="XWR-hg-HzE" firstAttribute="leading" secondItem="u7S-mT-4q4" secondAttribute="leading" id="UJf-Ql-beG"/>
                         <constraint firstItem="39h-Qn-dbH" firstAttribute="centerY" secondItem="u7S-mT-4q4" secondAttribute="centerY" id="YZM-JT-OPq"/>
                         <constraint firstAttribute="trailing" secondItem="XWR-hg-HzE" secondAttribute="trailing" id="a3b-S1-9v5"/>
@@ -193,7 +194,7 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="wab-Ry-WCr">
                     <rect key="frame" x="-200" y="0.0" width="200" height="667"/>
                     <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_pic_thumb.png" translatesAutoresizingMaskIntoConstraints="NO" id="ErH-vf-qhU">
+                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="profile_placeholder.png" translatesAutoresizingMaskIntoConstraints="NO" id="ErH-vf-qhU">
                             <rect key="frame" x="10" y="98" width="30" height="30"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="30" id="ESo-nA-Mr8"/>
@@ -324,7 +325,7 @@
                     <rect key="frame" x="0.0" y="68" width="375" height="44"/>
                     <subviews>
                         <searchBar contentMode="redraw" translatesAutoresizingMaskIntoConstraints="NO" id="CuF-aC-cY5">
-                            <rect key="frame" x="0.0" y="0.0" width="316" height="44"/>
+                            <rect key="frame" x="0.0" y="0.0" width="316" height="56"/>
                             <textInputTraits key="textInputTraits"/>
                         </searchBar>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Kly-EZ-Br8">
@@ -366,15 +367,15 @@
         </view>
     </objects>
     <resources>
-        <image name="back_icon.png" width="16" height="16"/>
+        <image name="back_icon.png" width="13" height="9"/>
         <image name="bg.png" width="751" height="172"/>
-        <image name="filter.png" width="16" height="16"/>
+        <image name="filter.png" width="12" height="12"/>
         <image name="logo.png" width="289" height="77"/>
-        <image name="menu.png" width="31" height="29"/>
+        <image name="menu.png" width="10" height="9"/>
         <image name="open_menu.png" width="29" height="30"/>
-        <image name="profile_pic_thumb.png" width="52" height="51"/>
-        <image name="search.png" width="16" height="16"/>
-        <image name="signin_ignup_icon.png" width="38" height="27"/>
-        <image name="swop_it.png" width="16" height="16"/>
+        <image name="profile_placeholder.png" width="132" height="132"/>
+        <image name="search.png" width="11" height="11"/>
+        <image name="signin_ignup_icon.png" width="12" height="9"/>
+        <image name="swop_it.png" width="42" height="41"/>
     </resources>
 </document>

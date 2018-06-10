@@ -59,7 +59,7 @@ static NSMutableSet *jsqMessagesCollectionViewCellActions = nil;
 @property (assign, nonatomic) UIEdgeInsets textViewFrameInsets;
 
 @property (assign, nonatomic) CGSize avatarViewSize;
-
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 @property (weak, nonatomic, readwrite) UITapGestureRecognizer *tapGestureRecognizer;
 
 - (void)jsq_handleTapGesture:(UITapGestureRecognizer *)tap;

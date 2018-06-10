@@ -13,7 +13,6 @@
             <connections>
                 <outlet property="categoriesCollectionView" destination="xTh-jj-suP" id="Yai-C5-g0a"/>
                 <outlet property="fourthImageV" destination="5PV-Fd-At5" id="0FF-M4-XFV"/>
-                <outlet property="itemConditionSwitch" destination="CNW-3z-5pg" id="9Te-te-m5u"/>
                 <outlet property="itemDescription" destination="HsB-Ok-6eA" id="4bR-dD-9MX"/>
                 <outlet property="itemFifthImageV" destination="nJD-dt-z81" id="xwU-be-jBD"/>
                 <outlet property="itemFirstImageV" destination="d0x-Ao-Nm1" id="Wm4-0i-u87"/>
@@ -22,6 +21,9 @@
                 <outlet property="itemTitle" destination="enE-Lt-PO1" id="yS8-AE-wEB"/>
                 <outlet property="itemsDescriptionView" destination="dih-gc-KCv" id="AcE-C4-cHx"/>
                 <outlet property="itemsTitleView" destination="z7H-OJ-bSp" id="ehs-2o-CAm"/>
+                <outlet property="lessThan2YearsBtn" destination="aBI-61-ljH" id="LOy-qq-yKN"/>
+                <outlet property="moreThan2YearsBtn" destination="cZE-hk-6CQ" id="zCb-iV-60L"/>
+                <outlet property="newBtn" destination="SgM-xe-alq" id="0fJ-Pb-d50"/>
                 <outlet property="removeImg1" destination="o2R-H8-Ydh" id="FIR-Er-UZ9"/>
                 <outlet property="removeImg2" destination="sJC-3g-eGp" id="fBG-Aj-EjP"/>
                 <outlet property="removeImg3" destination="Ljo-eo-BZ7" id="Rnx-uN-2IC"/>
@@ -42,7 +44,7 @@
                     <rect key="frame" x="0.0" y="70" width="375" height="597"/>
                     <subviews>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ZGg-5n-lf6">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="900"/>
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="980"/>
                             <subviews>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="z7H-OJ-bSp">
                                     <rect key="frame" x="0.0" y="420" width="375" height="100"/>
@@ -448,25 +450,167 @@
                                     </constraints>
                                 </view>
                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Txw-Tj-edP">
-                                    <rect key="frame" x="0.0" y="840" width="375" height="70"/>
+                                    <rect key="frame" x="0.0" y="840" width="375" height="110"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Item Condition" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tPh-4C-wiq">
-                                            <rect key="frame" x="50" y="25" width="112" height="21"/>
+                                            <rect key="frame" x="50" y="10" width="112" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <color key="textColor" red="0.1058823529" green="0.49803921569999998" blue="0.2156862745" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
                                         </label>
-                                        <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CNW-3z-5pg">
-                                            <rect key="frame" x="301" y="20" width="51" height="31"/>
-                                        </switch>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cZE-hk-6CQ" userLabel="More than 2 years">
+                                            <rect key="frame" x="50" y="36" width="18" height="18"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="18" id="E1Y-KG-bkC"/>
+                                                <constraint firstAttribute="height" constant="18" id="WGz-ef-FF7"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
+                                                    <color key="value" red="1" green="0.51070753079999998" blue="0.16589298990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="iconStrokeWidth">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="indicatorSize">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
+                                                    <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="marginWidth">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="moreThan2Years:" destination="-1" eventType="touchUpInside" id="Ddk-oS-FzS"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="K86-F3-PUc">
+                                            <rect key="frame" x="76" y="36" width="284" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="18" id="Ma5-cb-Uoc"/>
+                                            </constraints>
+                                            <state key="normal" title="&gt; 2 years">
+                                                <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="moreThan2Years:" destination="-1" eventType="touchUpInside" id="Djq-yz-Zvq"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aBI-61-ljH" userLabel="Less than 2 years">
+                                            <rect key="frame" x="50" y="59" width="18" height="18"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="18" id="8Gw-XN-SPu"/>
+                                                <constraint firstAttribute="width" constant="18" id="b9V-Mj-UIu"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
+                                                    <color key="value" red="1" green="0.51070753079999998" blue="0.16589298990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="iconStrokeWidth">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="indicatorSize">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
+                                                    <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="marginWidth">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="lessThan2Years:" destination="-1" eventType="touchUpInside" id="Zeh-6d-9jr"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IPX-Ci-iiC">
+                                            <rect key="frame" x="76" y="59" width="253" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="18" id="ARV-HR-J4C"/>
+                                            </constraints>
+                                            <state key="normal" title="&lt; 2 years">
+                                                <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="lessThan2Years:" destination="-1" eventType="touchUpInside" id="zgx-DK-F9A"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SgM-xe-alq" userLabel="New">
+                                            <rect key="frame" x="50" y="82" width="18" height="18"/>
+                                            <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" constant="18" id="2o0-Z8-YJR"/>
+                                                <constraint firstAttribute="height" constant="18" id="hM6-gn-MDz"/>
+                                            </constraints>
+                                            <userDefinedRuntimeAttributes>
+                                                <userDefinedRuntimeAttribute type="boolean" keyPath="iconSquare" value="NO"/>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="iconSize">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="iconColor">
+                                                    <color key="value" red="1" green="0.51070753079999998" blue="0.16589298990000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="iconStrokeWidth">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="indicatorSize">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="color" keyPath="indicatorColor">
+                                                    <color key="value" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                </userDefinedRuntimeAttribute>
+                                                <userDefinedRuntimeAttribute type="number" keyPath="marginWidth">
+                                                    <real key="value" value="10"/>
+                                                </userDefinedRuntimeAttribute>
+                                            </userDefinedRuntimeAttributes>
+                                            <connections>
+                                                <action selector="newTapped:" destination="-1" eventType="touchUpInside" id="gDE-nn-UDE"/>
+                                            </connections>
+                                        </button>
+                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nB3-Al-AYb">
+                                            <rect key="frame" x="76" y="82" width="253" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="height" constant="18" id="w7E-q2-Zwp"/>
+                                            </constraints>
+                                            <state key="normal" title="New">
+                                                <color key="titleColor" white="0.33333333329999998" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
+                                            <connections>
+                                                <action selector="newTapped:" destination="-1" eventType="touchUpInside" id="eu0-3k-WxU"/>
+                                            </connections>
+                                        </button>
                                     </subviews>
                                     <color key="backgroundColor" red="0.97647058823529409" green="0.98039215686274506" blue="0.98431372549019602" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
+                                        <constraint firstItem="cZE-hk-6CQ" firstAttribute="top" secondItem="tPh-4C-wiq" secondAttribute="bottom" constant="5" id="6dr-wh-QS5"/>
+                                        <constraint firstItem="cZE-hk-6CQ" firstAttribute="leading" secondItem="tPh-4C-wiq" secondAttribute="leading" id="7Ls-xx-ucs"/>
+                                        <constraint firstItem="nB3-Al-AYb" firstAttribute="centerY" secondItem="SgM-xe-alq" secondAttribute="centerY" id="7d3-w4-AIc"/>
                                         <constraint firstItem="tPh-4C-wiq" firstAttribute="leading" secondItem="Txw-Tj-edP" secondAttribute="leading" constant="50" id="BlP-qF-0T4"/>
-                                        <constraint firstAttribute="trailing" secondItem="CNW-3z-5pg" secondAttribute="trailing" constant="25" id="QOm-LY-ZkW"/>
-                                        <constraint firstItem="CNW-3z-5pg" firstAttribute="centerY" secondItem="Txw-Tj-edP" secondAttribute="centerY" id="h4c-6k-zWn"/>
-                                        <constraint firstItem="tPh-4C-wiq" firstAttribute="centerY" secondItem="Txw-Tj-edP" secondAttribute="centerY" id="k23-u2-q3R"/>
-                                        <constraint firstAttribute="height" constant="70" id="q60-84-jhi"/>
+                                        <constraint firstItem="IPX-Ci-iiC" firstAttribute="centerY" secondItem="aBI-61-ljH" secondAttribute="centerY" id="CZQ-Qf-xqC"/>
+                                        <constraint firstItem="aBI-61-ljH" firstAttribute="leading" secondItem="cZE-hk-6CQ" secondAttribute="leading" id="F5N-f1-7b1"/>
+                                        <constraint firstAttribute="trailing" secondItem="IPX-Ci-iiC" secondAttribute="trailing" constant="46" id="ZXc-8s-0dk"/>
+                                        <constraint firstItem="K86-F3-PUc" firstAttribute="centerY" secondItem="cZE-hk-6CQ" secondAttribute="centerY" id="a8c-ti-vqx"/>
+                                        <constraint firstItem="SgM-xe-alq" firstAttribute="top" secondItem="aBI-61-ljH" secondAttribute="bottom" constant="5" id="bPT-Bo-4A5"/>
+                                        <constraint firstItem="IPX-Ci-iiC" firstAttribute="leading" secondItem="aBI-61-ljH" secondAttribute="trailing" constant="8" id="gXv-jw-J1p"/>
+                                        <constraint firstAttribute="trailing" secondItem="K86-F3-PUc" secondAttribute="trailing" constant="15" id="kNl-ZE-iFV"/>
+                                        <constraint firstItem="aBI-61-ljH" firstAttribute="top" secondItem="cZE-hk-6CQ" secondAttribute="bottom" constant="5" id="pSB-Fk-Q9U"/>
+                                        <constraint firstAttribute="height" constant="110" id="q60-84-jhi"/>
+                                        <constraint firstItem="SgM-xe-alq" firstAttribute="leading" secondItem="cZE-hk-6CQ" secondAttribute="leading" id="qI3-DY-LTo"/>
+                                        <constraint firstItem="nB3-Al-AYb" firstAttribute="leading" secondItem="SgM-xe-alq" secondAttribute="trailing" constant="8" id="v4e-oy-oaa"/>
+                                        <constraint firstAttribute="trailing" secondItem="nB3-Al-AYb" secondAttribute="trailing" constant="46" id="wVG-xZ-MWg"/>
+                                        <constraint firstItem="tPh-4C-wiq" firstAttribute="top" secondItem="Txw-Tj-edP" secondAttribute="top" constant="10" id="xdX-oz-pNt"/>
+                                        <constraint firstItem="K86-F3-PUc" firstAttribute="leading" secondItem="cZE-hk-6CQ" secondAttribute="trailing" constant="8" id="xtj-Cg-6pJ"/>
                                     </constraints>
                                 </view>
                             </subviews>
@@ -482,7 +626,7 @@
                                 <constraint firstAttribute="trailing" secondItem="dih-gc-KCv" secondAttribute="trailing" id="U4x-BG-MeK"/>
                                 <constraint firstItem="Txw-Tj-edP" firstAttribute="leading" secondItem="ZGg-5n-lf6" secondAttribute="leading" id="ZLu-G6-LqP"/>
                                 <constraint firstItem="Kh2-3C-a0W" firstAttribute="top" secondItem="ZGg-5n-lf6" secondAttribute="top" constant="20" id="c1u-VI-QlS"/>
-                                <constraint firstAttribute="height" constant="900" id="ekE-U3-P6U"/>
+                                <constraint firstAttribute="height" constant="980" id="ekE-U3-P6U"/>
                                 <constraint firstItem="z7H-OJ-bSp" firstAttribute="leading" secondItem="ZGg-5n-lf6" secondAttribute="leading" id="jLx-xY-5iR"/>
                                 <constraint firstItem="Kh2-3C-a0W" firstAttribute="leading" secondItem="ZGg-5n-lf6" secondAttribute="leading" id="mfr-DU-tZV"/>
                                 <constraint firstAttribute="trailing" secondItem="z7H-OJ-bSp" secondAttribute="trailing" id="qrw-fF-0Eg"/>

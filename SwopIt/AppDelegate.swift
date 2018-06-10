@@ -15,9 +15,10 @@ import Firebase
 import FirebaseMessaging
 import UserNotifications
 import UserNotificationsUI
+import FirebaseInstanceID
 //, FIRMessagingDelegate
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate  {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, FIRMessagingDelegate  {
 
     var window: UIWindow?
 
@@ -30,9 +31,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         SwopItLocationManager.getInstance().requestLocationUpdate()
         self.window?.rootViewController = MainTabsViewController()
-        GMSServices.provideAPIKey("AIzaSyDFJj0qTAOZqWM8PGDOcygn9rPuBbxbYjs")
+        GMSServices.provideAPIKey("AIzaSyAi_Ps03oTgKwCcW_bTHDOWc82yQ6VGOHs")
         Fabric.with([Crashlytics.self])
-        FIRApp.configure()
         self.registerWithFriebaseForNotifications(application: application)
         
         return true
@@ -43,11 +43,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = self
-            
             let authOptions: UNAuthorizationOptions = [.alert, .badge, .sound]
             UNUserNotificationCenter.current().requestAuthorization(
                 options: authOptions,
                 completionHandler: {_, _ in })
+            // For iOS 10 data message (sent via FCM
+            FIRMessaging.messaging().remoteMessageDelegate = self
         } else {
             let settings: UIUserNotificationSettings =
                 UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
@@ -55,23 +56,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         application.registerForRemoteNotifications()
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(self.tokenRefreshNotification),
-                                               name: .firInstanceIDTokenRefresh,
-                                               object: nil)
         
-        
-        FIRMessaging.messaging().connect { error in
-            if let err = error{
-                print(err)
-            }
-        }
+        FIRApp.configure()
     }
+    
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        
-        print("App Did Register : \(deviceToken)")
-
+        let   tokenString = deviceToken.reduce("", {$0 + String(format: "%02X",    $1)})
+        print("deviceToken: \(tokenString)")
     }
+    
     func tokenRefreshNotification(notification: NSNotification) {
         print("noti refresh tocken")
         
@@ -79,6 +72,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             print("noti InstanceID token: \(refreshedToken)")
         }
     }
+    
     func applicationWillResignActive(_ application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
         // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
@@ -94,41 +88,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
+        getChatCount()
         // Restart any tasks that were paused (or not yet started) while the application was inactive. If the application was previously in the background, optionally refresh the user interface.
     }
 
     func applicationWillTerminate(_ application: UIApplication) {
-        // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
-        // Saves changes in the application's managed object context before the application terminates.
-        //self.saveContext()
+
     }
-//    @available(iOS 10.0, *)
-//    func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Swift.Void){
-//        print("Here in UNUserNotifications")
-//
-//
-//    }
-//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-//        // If you are receiving a notification message while your app is in the background,
-//        // this callback will not be fired till the user taps on the notification launching the application.
-//        // TODO: Handle data of notification
-//
-//        // Print message ID.
-//        
-//        print("Message ID: \(userInfo["gcm.message_id"]!)")
-//        
-//        // Print full message.
-//        print(userInfo)
-//    }
     
-//    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
-//                     fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-//        
-//        print("Message ID: \(userInfo)")
-//
-//        
-//    }
-//    
+    func getChatCount() {
+        if(!Reachability.isConnectedToNetwork() && !Utils.isUserLoggedin()){
+            return
+        }
+        let url = Constants.GET_NEW_MESSAGE_COUNT
+        let params = [Constants.KEY_USER_ID :  Utils.getLoggedInUserId()]
+        Utils.httpCall(url: url, params: params as [String : AnyObject]?, httpMethod: Constants.HTTP_METHOD_POST) { (resp) in
+            let respCode = (resp?[Constants.KEY_RESPONSE_CODE] as! Int)
+            if(respCode == 1){
+                let a = resp?["Response"] as! [String : AnyObject]
+                let count = a["Count"] as! Int
+                Utils.setNewMessageCount(val: count)
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateMenu"), object: nil)
+            }
+        }
+    }
     
     func showNotificationsAlert(type: String, senderUser: String, senderId: String){
         let alert = UIAlertController(title: "SwopIt", message: "You have a \(type)", preferredStyle: .alert)
@@ -137,7 +120,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 let rootVC = self.window?.rootViewController as! MainTabsViewController
                 rootVC.presentChatVCFromNotifications(userId: Utils.getLoggedInUserId(), userId2: senderId, receiver: senderUser)
             }
-            else{
+            else if(type == "Swap request"){
                 let rootVC = self.window?.rootViewController as! MainTabsViewController
                 rootVC.goToInboxFromNotifications()
             }
@@ -149,76 +132,41 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
-        // If you are receiving a notification message while your app is in the background,
-        // this callback will not be fired till the user taps on the notification launching the application.
-        // TODO: Handle data of notification
-        
-        // With swizzling disabled you must let Messaging know about the message, for Analytics
-        // Messaging.messaging().appDidReceiveMessage(userInfo)
-        
-        // Print message ID.
-//        if let messageID = userInfo[gcmMessageIDKey] {
-//            print("Message ID: \(messageID)")
-//        }
-        
-        // Print full message.
         print(userInfo)
-        let type = userInfo["Type"] as! String
-        let recvr = userInfo["SenderUser"] as! String
-        let senderId = userInfo["SenderId"] as! String
-        if(application.applicationState == .background){
-        
-        if(Utils.isUserLoggedin()){
-        if(type == "Chat"){
-            let rootVC = self.window?.rootViewController as! MainTabsViewController
-            rootVC.presentChatVCFromNotifications(userId: Utils.getLoggedInUserId(), userId2: senderId, receiver: recvr)
-        }
-        else{
-            let rootVC = self.window?.rootViewController as! MainTabsViewController
-            rootVC.goToInboxFromNotifications()
-        }
-        }
-        }
-        else{
-            showNotificationsAlert(type: type, senderUser: recvr, senderId: senderId)
+        if let type = userInfo["Type"], let recvr = userInfo["SenderUser"], let senderId = userInfo["SenderId"]{
+            if(application.applicationState == .background){
+                if(Utils.isUserLoggedin()){
+                    if(type as! String == "Chat"){
+                        let rootVC = self.window?.rootViewController as! MainTabsViewController
+                        rootVC.presentChatVCFromNotifications(userId: Utils.getLoggedInUserId(), userId2: senderId as! String, receiver: recvr as! String)
+                    }else if(type as! String == "Swap request"){
+                        let rootVC = self.window?.rootViewController as! MainTabsViewController
+                        rootVC.goToInboxFromNotifications()
+                    }
+                }
+            }else{
+                showNotificationsAlert(type: type as! String, senderUser: recvr as! String, senderId: senderId as! String)
+            }
         }
     }
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
-        // If you are receiving a notification message while your app is in the background,
-        // this callback will not be fired till the user taps on the notification launching the application.
-        // TODO: Handle data of notification
-        
-        // With swizzling disabled you must let Messaging know about the message, for Analytics
-        // Messaging.messaging().appDidReceiveMessage(userInfo)
-        
-        // Print message ID.
-//        if let messageID = userInfo[gcmMessageIDKey] {
-//            print("Message ID: \(messageID)")
-//        }
-        
-        // Print full message.
         print(userInfo)
-        let type = userInfo["Type"] as! String
-        let recvr = userInfo["SenderUser"] as! String
-        let senderId = userInfo["SenderId"] as! String
-        if(application.applicationState == .background){
-       
-        if(Utils.isUserLoggedin()){
-            if(type == "Chat"){
-                let rootVC = self.window?.rootViewController as! MainTabsViewController
-                rootVC.presentChatVCFromNotifications(userId: Utils.getLoggedInUserId(), userId2: senderId, receiver: recvr)
+        if let type = userInfo["Type"], let recvr = userInfo["SenderUser"], let senderId = userInfo["SenderId"]{
+            if(application.applicationState == .background){
+                if(Utils.isUserLoggedin()){
+                    if(type as! String == "Chat"){
+                        let rootVC = self.window?.rootViewController as! MainTabsViewController
+                        rootVC.presentChatVCFromNotifications(userId: Utils.getLoggedInUserId(), userId2: senderId as! String, receiver: recvr as! String)
+                    }else if(type as! String == "Swap request"){
+                        let rootVC = self.window?.rootViewController as! MainTabsViewController
+                        rootVC.goToInboxFromNotifications()
+                    }
+                }
+            }else{
+                showNotificationsAlert(type: type as! String, senderUser: recvr as! String, senderId: senderId as! String)
             }
-            else{
-                let rootVC = self.window?.rootViewController as! MainTabsViewController
-                rootVC.goToInboxFromNotifications()
-            }
-        }
-        
-        }
-        else{
-            showNotificationsAlert(type: type, senderUser: recvr, senderId: senderId)
         }
         completionHandler(UIBackgroundFetchResult.newData)
     }
@@ -254,16 +202,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
     }
 
-    
-    
-//    func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage){
-//        print(remoteMessage.appData)
-//        
-//        let appDelegate =
-//            UIApplication.shared.delegate as! AppDelegate
-//       
-//        print("Remote Message Done")
-//    }
-//  
+    func applicationReceivedRemoteMessage(_ remoteMessage: FIRMessagingRemoteMessage) {
+        print(remoteMessage.appData)
+    }
 }
 

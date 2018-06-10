@@ -71,14 +71,6 @@ class ChatViewController: JSQMessagesViewController  {
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        self.getAllChatMessages()
-//        addMessage(withId: "foo", name: "Mr.Bolt", text: "I am so fast!")
-//        // messages sent from local sender
-//        addMessage(withId: self.userId!, name: "Me", text: "I bet I can run faster than you!")
-//        addMessage(withId: senderId, name: "Me", text: "I like to run!")
-//        // animates the receiving of a new message on the view
-//        finishReceivingMessage()
-        
         requestTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(getAllChatMessagesInBackground), userInfo: nil, repeats: true)
         
     }
@@ -94,6 +86,26 @@ class ChatViewController: JSQMessagesViewController  {
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return messages.count
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let size = (super.collectionView(collectionView, layout: collectionViewLayout, sizeForItemAt: indexPath))
+        return CGSize(width: size.width, height: size.height + 10)
+    }
+    
+    override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = super.collectionView(collectionView, cellForItemAt: indexPath) as? JSQMessagesCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        let customAttributes = self.collectionView.layoutAttributesForItem(at: indexPath) as! JSQMessagesCollectionViewLayoutAttributes
+        let width = customAttributes.messageBubbleContainerViewWidth
+        if (width <= 140) {
+            customAttributes.messageBubbleContainerViewWidth = 140
+        }
+        cell.apply(customAttributes)
+        return cell
+    }
+    
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -121,13 +133,7 @@ class ChatViewController: JSQMessagesViewController  {
     func updateUsers(userId: String?, userId2: String?, user1: User?, user2: User?){
         self.userId = userId
         self.userId2 = userId2
-           }
-    private func addMessage(withId id: String, name: String, text: String) {
-        if let message = JSQMessage(senderId: id, displayName: name, text: text) {
-            messages.append(message)
-        }
-    }
-    
+           }    
     
     func getAllChatMessagesInBackground(){
         
@@ -147,7 +153,10 @@ class ChatViewController: JSQMessagesViewController  {
             for msg in chatMsgs!{
                 let chatMsg = ChatMessage(dict: msg)
                 self.chatMessages.append(chatMsg)
-                let msgg = JSQMessage(senderId: chatMsg.sender, displayName: "", text: chatMsg.message)
+                let formatter = DateFormatter()
+                formatter.dateFormat = "dd MM yyyy hh:mm a"
+                let dateValue = formatter.date(from: chatMsg.dateStr!)
+                let msgg = JSQMessage(senderId: chatMsg.sender , senderDisplayName: "" , date: dateValue, text:chatMsg.message )
                 self.messages.append(msgg!)
             }
             self.finishReceivingMessage()
@@ -172,7 +181,10 @@ class ChatViewController: JSQMessagesViewController  {
             for msg in chatMsgs{
                 let chatMsg = ChatMessage(dict: msg)
                 self.chatMessages.append(chatMsg)
-                let msgg = JSQMessage(senderId: chatMsg.sender, displayName: chatMsg.sender, text: chatMsg.message)
+                let formatter = DateFormatter()
+                formatter.dateFormat = "dd MM yyyy hh:mm a"
+                let dateValue = formatter.date(from: chatMsg.dateStr!)
+                let msgg = JSQMessage(senderId: chatMsg.sender , senderDisplayName: chatMsg.sender , date: dateValue, text:chatMsg.message )
                 self.messages.append(msgg!)
             }
             self.finishReceivingMessage()

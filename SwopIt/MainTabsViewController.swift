@@ -58,18 +58,17 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
     let selectedSubCatImages = ["Accessories" : UIImage(named:"accessories_active"), "Dress" : UIImage(named:"dres_active"), "Shoes" : UIImage(named:"shoe_active"), "Mobile" : UIImage(named:"mobile_active"), "iPad & Laptops" : UIImage(named:"laptop_active"), "Electronics" : UIImage(named:"electronics_active"), "Art" : UIImage(named:"art_active"), "Books" : UIImage(named:"bookandart_active"), "Films" : UIImage(named:"films_active")]
 //    [UIImage(named:"profile_icon"), "Profile"],
     let menuItems = [  [UIImage(named:"settings_icon"), "Settings"],
-                       [UIImage(named:"ic_mail"), "Inbox"],
-                       [UIImage(named:"redeemcoin_icon"), "Redeem Coin"], [UIImage(named:"help_icon"), "Help"], [UIImage(named:"help_icon"), "Contact Us"], [UIImage(named:"become_swapper_icon"), "Become a swopper"], [UIImage(named:"become_swapper_icon"), "My Items"], [UIImage(named:"settings_icon"), "LogOut"]]
-    let menuItemsWithoutLoggedInUser = [[UIImage(named:"settings_icon"), "Settings"] , [UIImage(named:"redeemcoin_icon"), "Redeem Coin"], [UIImage(named:"help_icon"), "Help"],[UIImage(named:"help_icon"), "Contact Us"]]
+                       [UIImage(named:"ic_mail"), "Inbox"], [UIImage(named:"help_icon"), "Help"], [UIImage(named:"help_icon"), "Contact Us"], [UIImage(named:"become_swapper_icon"), "Become a swopper"], [UIImage(named:"become_swapper_icon"), "My Items"], [UIImage(named:"settings_icon"), "LogOut"]]
+    let menuItemsWithoutLoggedInUser = [[UIImage(named:"settings_icon"), "Settings"] , [UIImage(named:"help_icon"), "Help"],[UIImage(named:"help_icon"), "Contact Us"]]
     
     var tab: UITabBarController?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-       
-        
         self.getAllCategories()
         self.searchView.isHidden = true
         self.mainUserNameLbl.text = Utils.getLoggedInUserName()
+        NotificationCenter.default.addObserver(self, selector: #selector(self.updateMenu(_:)), name: NSNotification.Name(rawValue: "updateMenu"), object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -82,6 +81,10 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
             self.loginSignupViewHeightConstraint.constant = 25
         }
         self.initMenu()
+    }
+    
+    func updateMenu(_ notification: NSNotification) {
+        self.menuTableView.reloadData()
     }
     
     func initMenu(){
@@ -252,18 +255,7 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
                 self.present(loginVC, animated: false, completion: nil)
             }
             break
-            
         case 2:
-            if(Utils.isUserLoggedin()){
-                let rcvc = RedeemCoinsViewController()
-                self.present(rcvc, animated: false, completion: nil)
-            }
-            else{
-                let helpVC = HelpViewController()
-                self.present(helpVC, animated: false, completion: nil)
-            }
-            break
-        case 3:
             if(Utils.isUserLoggedin()){
                 let helpVC = HelpViewController()
                 self.present(helpVC, animated: false, completion: nil)
@@ -273,7 +265,7 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
                 self.present(contactUsVC, animated: false, completion: nil)
             }
             break
-        case 4:
+        case 3:
             if(Utils.isUserLoggedin()){
                 let contactUsVC = ContactUsViewController()
                 self.present(contactUsVC, animated: false, completion: nil)
@@ -282,20 +274,20 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
 
             }
             break
-        case 5:
+        case 4:
             if(Utils.isUserLoggedin()){
                 let becomASwopperVC = BecomeASwopperViewController()
                 self.present(becomASwopperVC, animated: false, completion: nil)
             }
             break
             
-        case 6:
+        case 5:
             if(Utils.isUserLoggedin()){
                 let myDealsVC = MyDealsViewController()
                 self.present(myDealsVC, animated: false, completion: nil)
             }
             break
-        case 7:
+        case 6:
             if(Utils.isUserLoggedin()){
                 let defaults = UserDefaults.standard
                 let alert = UIAlertController(title: "SwopIt", message: "Are you sure to log out?", preferredStyle: UIAlertControllerStyle.alert)

@@ -37,6 +37,9 @@ class AddItemsViewController: UIViewController, UICollectionViewDelegate, UIColl
     @IBOutlet weak var fourthImageV: UIImageView!
     
     @IBOutlet weak var itemFifthImageV: UIImageView!
+    @IBOutlet weak var moreThan2YearsBtn: UIButton!
+    @IBOutlet weak var lessThan2YearsBtn: UIButton!
+    @IBOutlet weak var newBtn: UIButton!
     
     var addedItemId: String?
     var currentUpdatingImageNumber = 0
@@ -49,6 +52,7 @@ class AddItemsViewController: UIViewController, UICollectionViewDelegate, UIColl
     var subCatImagesDict : [String : UIImage?]?
     var selectedSubCatImagesDict: [String: UIImage?]?
     var selectedCatImagesDict: [String: UIImage?]?
+    var itemCondition: String?
     @IBOutlet weak var categoriesCollectionView: UICollectionView!
         let categories = [[UIImage(named:"fashion_inactive"), "Fashion"], [UIImage(named:"electronics_inactive"), "Electronics"],[UIImage(named:"cosmetics_inactive"), "Cosmetics"], [UIImage(named:"furniture_inactive"), "Furniture"]]
     
@@ -80,6 +84,16 @@ class AddItemsViewController: UIViewController, UICollectionViewDelegate, UIColl
 
         self.itemsTitleView.addGestureRecognizer(tapGestureRecognizer1)
          self.itemsDescriptionView.addGestureRecognizer(tapGestureRecognizer2)
+        
+        moreThan2YearsBtn.layer.borderColor = UIColor.lightGray.cgColor
+        moreThan2YearsBtn.layer.borderWidth = 2
+        moreThan2YearsBtn.layer.cornerRadius = 9
+        lessThan2YearsBtn.layer.borderColor = UIColor.lightGray.cgColor
+        lessThan2YearsBtn.layer.borderWidth = 2
+        lessThan2YearsBtn.layer.cornerRadius = 9
+        newBtn.layer.borderColor = UIColor.lightGray.cgColor
+        newBtn.layer.borderWidth = 2
+        newBtn.layer.cornerRadius = 9
     }
     func onViewTapped(){
         self.itemTitle.resignFirstResponder()
@@ -183,28 +197,29 @@ class AddItemsViewController: UIViewController, UICollectionViewDelegate, UIColl
     }
     
     func uploadImg(images:[UIImage]){
-        let urlStr = Constants.UPLOAD_ITEM_IMAGE+"/"+self.addedItemId!
-        MBProgressHUD.showAdded(to: self.view, animated: false)
-        
-        Alamofire.upload(multipartFormData: { (multipartFormData) in
-            
-            for i in 0...images.count - 1{
+        let urlStr = Constants.UPLOAD_ITEM_IMAGE
+        for i in 0...images.count - 1{
+            Alamofire.upload(multipartFormData: { (multipartFormData) in
                 let img = Utils.imageWithImage(image: images[i], scaledToSize: CGSize(width:60, height:60))
-                let imgData = UIImagePNGRepresentation(img)
-                multipartFormData.append(imgData!, withName: "journalImg", fileName: "\(i+1).png", mimeType: "image/jpg")
-            }
-        }, to:urlStr)
-        { (result) in
-            MBProgressHUD.hide(for: self.view, animated: false)
-            switch result {
-            case .success(let upload, _, _):
-                upload.responseJSON { response in
-                     print("Response : \(response)")
+                let imgData = UIImageJPEGRepresentation(img, 0.9)
+                multipartFormData.append(imgData!, withName: "journalImg", fileName: "\(i+1).jpg", mimeType: "image/jpg")
+                multipartFormData.append((self.addedItemId?.data(using:.utf8)!)!, withName: "ItemId")
+                multipartFormData.append("\(i+1)".data(using: .utf8)!, withName: "ImageNumber")
+            }, to:urlStr)
+            { (result) in
+                switch result {
+                case .success(let upload, _, _):
+                    upload.responseJSON { response in
+                        print("Response : \(response)")
+                    }
+                case .failure( _):
+                    print("Error")
                 }
-            case .failure( _):
-                print("Error")
             }
         }
+        
+        
+        MBProgressHUD.showAdded(to: self.view, animated: false)
     }
     
     @IBAction func goBack(_ sender: Any) {
@@ -251,7 +266,7 @@ class AddItemsViewController: UIViewController, UICollectionViewDelegate, UIColl
             Utils.showAlert(title: "SwopIt", msg: "Please enter Item Name", vc: self)
             return
         }
-        if(itmNm.characters.count <= 0){
+        if(itmNm.count <= 0){
             Utils.showAlert(title: "SwopIt", msg: "Please enter Item Name", vc: self)
             return
         }
@@ -259,16 +274,21 @@ class AddItemsViewController: UIViewController, UICollectionViewDelegate, UIColl
             Utils.showAlert(title: "SwopIt", msg: "Please enter Item Description", vc: self)
             return
         }
-        if(itmDesc.characters.count <= 0){
+        if(itmDesc.count <= 0){
             Utils.showAlert(title: "SwopIt", msg: "Please enter Item Description", vc: self)
             return
         }
-        guard let subCat = self.selectedSubCategory else {
+        guard self.selectedSubCategory != nil else {
             Utils.showAlert(title: "SwopIt", msg: "Please select a subcategory", vc: self)
             return
         }
+        
+        guard let itmCondition = self.itemCondition else {
+            Utils.showAlert(title: "SwopIt", msg: "Please select Item Condition", vc: self)
+            return
+        }
 
-        self.addItem(itemName: self.itemTitle.text!, itemDetails: self.itemDescription.text!, itemCondition: self.itemConditionSwitch.isOn ? "New" : "Old", categoryId: (self.selectedSubCategory?.id!)!, userId: Utils.getLoggedInUserId(), images: images)
+        self.addItem(itemName: self.itemTitle.text!, itemDetails: self.itemDescription.text!, itemCondition: itmCondition, categoryId: (self.selectedSubCategory?.id!)!, userId: Utils.getLoggedInUserId(), images: images)
        
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
@@ -293,6 +313,7 @@ class AddItemsViewController: UIViewController, UICollectionViewDelegate, UIColl
             let picker: UIImagePickerController = UIImagePickerController()
             picker.delegate = self
             picker.sourceType = .camera
+            picker.allowsEditing = true
             self.present(picker, animated: false) {
                 
             }
@@ -304,6 +325,7 @@ class AddItemsViewController: UIViewController, UICollectionViewDelegate, UIColl
             let picker: UIImagePickerController = UIImagePickerController()
             picker.delegate = self
             picker.sourceType = .savedPhotosAlbum
+            picker.allowsEditing = true
             self.present(picker, animated: false) {
                 
             }
@@ -317,7 +339,7 @@ class AddItemsViewController: UIViewController, UICollectionViewDelegate, UIColl
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]){
         
-        if let pickedImage = info[UIImagePickerControllerOriginalImage] as? UIImage {
+        if let pickedImage = info[UIImagePickerControllerEditedImage] as? UIImage {
                 picker.dismiss(animated: false, completion: {
                     
                 })
@@ -428,4 +450,36 @@ class AddItemsViewController: UIViewController, UICollectionViewDelegate, UIColl
         self.scrollInnerViewTopConstraint.constant = 0
         self.scrollInnerViewBottomConstraint.constant = 0
     }
+    
+    
+    @IBAction func moreThan2Years(_ sender: UIButton) {
+        clearButtons()
+        moreThan2YearsBtn.layer.borderColor = UIColor(hexString: "1B7F37").cgColor
+        moreThan2YearsBtn.backgroundColor = UIColor(hexString: "1B7F37")
+        itemCondition = "> 2 years"
+    }
+    
+    @IBAction func lessThan2Years(_ sender: UIButton) {
+        clearButtons()
+        lessThan2YearsBtn.layer.borderColor = UIColor(hexString: "1B7F37").cgColor
+        lessThan2YearsBtn.backgroundColor = UIColor(hexString: "1B7F37")
+        itemCondition = "< 2 years"
+    }
+    
+    @IBAction func newTapped(_ sender: UIButton) {
+        clearButtons()
+        newBtn.layer.borderColor = UIColor(hexString: "1B7F37").cgColor
+        newBtn.backgroundColor = UIColor(hexString: "1B7F37")
+        itemCondition = "New"
+    }
+    
+    func clearButtons() {
+        moreThan2YearsBtn.layer.borderColor = UIColor.lightGray.cgColor
+        lessThan2YearsBtn.layer.borderColor = UIColor.lightGray.cgColor
+        newBtn.layer.borderColor = UIColor.lightGray.cgColor
+        moreThan2YearsBtn.backgroundColor = UIColor.white
+        lessThan2YearsBtn.backgroundColor = UIColor.white
+        newBtn.backgroundColor = UIColor.white
+    }
+    
 }

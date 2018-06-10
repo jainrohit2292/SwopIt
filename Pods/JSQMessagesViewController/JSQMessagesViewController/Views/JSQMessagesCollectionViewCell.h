@@ -103,7 +103,7 @@
  *  This label is most commonly used to display the message sender.
  */
 @property (weak, nonatomic, readonly) JSQMessagesLabel *messageBubbleTopLabel;
-
+@property (weak, nonatomic, readonly)  UILabel *dateLabel;
 /**
  *  Returns the label that is pinned to the bottom of the cell.
  *  This label is most commonly used to display message delivery status.

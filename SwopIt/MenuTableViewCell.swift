@@ -24,7 +24,18 @@ class MenuTableViewCell: UITableViewCell {
     }
     func updateCell(image: UIImage?, title: String){
         self.menuItemImgV.image = image
-        self.menuItemTitleLbl.text = title
+        var titleText = title
+        self.menuItemTitleLbl.font = UIFont.systemFont(ofSize: 12, weight: UIFontWeightRegular)
+        if (titleText == "Inbox") {
+            if (Utils.getNewMessageCount() != nil ){
+                let msgCount = Utils.getNewMessageCount()
+                if(msgCount != "0" && msgCount != ""){
+                    titleText = "Inbox (" + msgCount! + ")"
+                    self.menuItemTitleLbl.font = UIFont.boldSystemFont(ofSize: 12.0)
+                }
+            }
+        }
+        self.menuItemTitleLbl.text = titleText
     }
     
 }
