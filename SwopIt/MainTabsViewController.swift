@@ -96,13 +96,9 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
         self.profileImgV.layer.cornerRadius = self.profileImgV.frame.width/2
         self.profileImgV.clipsToBounds = true
         if(Utils.isUserLoggedin()){
-            self.profileImgV.isHidden = false
-            self.profileImgV.sd_setImage(with: URL(string:Utils.getLoggedInUserProfilePictureUrl()), placeholderImage: UIImage(named:"profile_placeholder"))
+        let profUrl = Utils.getLoggedInUserProfilePictureUrl()
+        self.profileImgV.sd_setImage(with: URL(string: Constants.GET_PROFILE_PIC_URL + profUrl), placeholderImage: UIImage(named:"profile_placeholder"))
         }
-        else{
-            self.profileImgV.isHidden = true
-        }
-        
         self.menuTableView.reloadData()
     }
     

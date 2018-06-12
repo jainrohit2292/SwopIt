@@ -383,26 +383,26 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath){
             self.selectedCategory = self.cats[indexPath.row]
-        if(self.segmentControl.selectedSegmentIndex == 0){
-            self.categoriesCollectionView.reloadData()
-            self.getItemsByCategoryAndUserId()
-        }
+//        if(self.segmentControl.selectedSegmentIndex == 0){
+//            self.categoriesCollectionView.reloadData()
+//            self.getItemsByCategoryAndUserId()
+//        }
     }
     
     @IBAction func onSegmentChanged(_ sender: Any) {
+//        if(segmentControl.selectedSegmentIndex == 0){
+//            self.swoppedItemsTableView.isHidden = false
+//            self.swopFriendsCollectionView.isHidden = true
+//            self.swopHistoryTableView.isHidden = true
+//            self.categoriesCollectionView.reloadData()
+//            self.getItemsByCategoryAndUserId()
+//        }
         if(segmentControl.selectedSegmentIndex == 0){
-            self.swoppedItemsTableView.isHidden = false
-            self.swopFriendsCollectionView.isHidden = true
-            self.swopHistoryTableView.isHidden = true
-            self.categoriesCollectionView.reloadData()
-            self.getItemsByCategoryAndUserId()
-        }
-        else if(segmentControl.selectedSegmentIndex == 1){
             self.swoppedItemsTableView.isHidden = true
             self.swopFriendsCollectionView.isHidden = true
             self.swopHistoryTableView.isHidden = false
         }
-        else if(segmentControl.selectedSegmentIndex == 2){
+        else if(segmentControl.selectedSegmentIndex == 1){
             self.swoppedItemsTableView.isHidden = true
             self.swopFriendsCollectionView.isHidden = false
             self.swopHistoryTableView.isHidden = true

@@ -62,7 +62,7 @@ class SignupViewController: UIViewController {
     }
 
     func register(name: String, username:String, email: String, password: String, mobileNumber: String){
-        let params = [Constants.KEY_NAME: name, Constants.KEY_USERNAME:username, Constants.KEY_EMAIL: email, Constants.KEY_PASSWORD:password,Constants.KEY_PHONE:mobileNumber, Constants.KEY_ABOUT:"", Constants.KEY_MORE_INFO:"", Constants.KEY_ADDRESS:self.addressTextField.text!, Constants.KEY_LONGITUDE:String(Utils.getUserLocationFromPrefs().longitude), Constants.KEY_LATITUDE:String(Utils.getUserLocationFromPrefs().latitude), Constants.KEY_DEVICE_ID:String(Utils.getDeviceId())]
+        let params = [Constants.KEY_NAME: name, Constants.KEY_USERNAME:username, Constants.KEY_EMAIL: email, Constants.KEY_PASSWORD:password,Constants.KEY_PHONE:mobileNumber, Constants.KEY_ABOUT:"", Constants.KEY_MORE_INFO:"", Constants.KEY_ADDRESS:self.addressTextField.text!, Constants.KEY_LONGITUDE:String(Utils.getUserLocationFromPrefs().longitude), Constants.KEY_LATITUDE:String(Utils.getUserLocationFromPrefs().latitude), Constants.KEY_DEVICE_ID: Utils.getDeviceToken()]
         
         
         MBProgressHUD.showAdded(to: self.view, animated: false)

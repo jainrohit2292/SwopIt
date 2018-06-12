@@ -16,6 +16,7 @@ class ChatMessage: NSObject {
     var receiverProfilePicUrl: String?
     var sender: String?
     var senderProfilePicUrl: String?
+    var timeStamp: Double?
     
     init(dict: [String: AnyObject]) {
         super.init()
@@ -24,6 +25,9 @@ class ChatMessage: NSObject {
         }
         if let dstr = dict["Date"]{
             self.dateStr = (dstr as! String)
+        }
+        if let timeStamp = dict["utc_date"]{
+            self.timeStamp = timeStamp as? Double
         }
         if let msg = dict["Message"]{
             self.message = (msg as! String)

@@ -1,10 +1,11 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -21,24 +22,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="r1X-V9-ptv">
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="r1X-V9-ptv">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="683"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="Fs7-qu-8u3">
-                                <rect key="frame" x="141.5" y="273" width="92" height="121"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="92" id="16e-sS-YhR"/>
-                                    <constraint firstAttribute="height" constant="121" id="19m-to-ZzA"/>
-                                </constraints>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="r1X-V9-ptv" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-20" id="Lak-d1-93E"/>
                             <constraint firstItem="r1X-V9-ptv" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leadingMargin" constant="-16" id="eQP-Rk-xVx"/>
-                            <constraint firstItem="Fs7-qu-8u3" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="lxJ-Z6-MKF"/>
                             <constraint firstAttribute="trailingMargin" secondItem="r1X-V9-ptv" secondAttribute="trailing" constant="-16" id="r9B-1W-Hn4"/>
-                            <constraint firstItem="Fs7-qu-8u3" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="w6m-lt-TN8"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="r1X-V9-ptv" secondAttribute="bottom" constant="-16" id="xzU-zf-tlT"/>
                         </constraints>
                     </view>
@@ -49,7 +41,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash_bg.png" width="767" height="1279"/>
-        <image name="splash_icon.png" width="277" height="365"/>
+        <image name="splash.png" width="767" height="1279"/>
     </resources>
 </document>

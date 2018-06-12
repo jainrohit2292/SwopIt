@@ -1,10 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11762" systemVersion="15G1421" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11757"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -141,7 +143,7 @@
                                     <rect key="frame" x="0.0" y="210" width="375" height="50"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Muq-B4-m4d">
-                                            <rect key="frame" x="8" y="13" width="49" height="24"/>
+                                            <rect key="frame" x="8" y="13" width="48" height="24"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                             <color key="textColor" red="0.066666666669999999" green="0.46274509800000002" blue="0.17254901959999999" alpha="1" colorSpace="calibratedRGB"/>
                                             <nil key="highlightedColor"/>
@@ -264,22 +266,8 @@
                                         <constraint firstItem="kl1-cY-H7h" firstAttribute="leading" secondItem="ggk-Eo-Z63" secondAttribute="leading" constant="50" id="vw9-Zl-ESU"/>
                                     </constraints>
                                 </view>
-                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCQ-mf-Uss">
-                                    <rect key="frame" x="127" y="604" width="120" height="28"/>
-                                    <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
-                                    <constraints>
-                                        <constraint firstAttribute="width" constant="120" id="QC5-b0-fgH"/>
-                                    </constraints>
-                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
-                                    <state key="normal" title="DS Swop">
-                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                    </state>
-                                    <connections>
-                                        <action selector="sendSwopRequest:" destination="-1" eventType="touchUpInside" id="xdh-Ys-AWc"/>
-                                    </connections>
-                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQC-SO-ifL">
-                                    <rect key="frame" x="8" y="603" width="111" height="30"/>
+                                    <rect key="frame" x="8" y="603" width="150" height="30"/>
                                     <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="b4R-cR-BqB"/>
@@ -292,11 +280,23 @@
                                         <action selector="swopIt:" destination="-1" eventType="touchUpInside" id="IFI-Vh-Ufz"/>
                                     </connections>
                                 </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCQ-mf-Uss">
+                                    <rect key="frame" x="217" y="604" width="150" height="28"/>
+                                    <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                                    <state key="normal" title="DS Swop">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="sendSwopRequest:" destination="-1" eventType="touchUpInside" id="xdh-Ys-AWc"/>
+                                    </connections>
+                                </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aGk-na-cTL">
-                                    <rect key="frame" x="255" y="603" width="112" height="30"/>
+                                    <rect key="frame" x="367" y="618" width="0.0" height="0.0"/>
                                     <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.91764705879999997" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
-                                        <constraint firstAttribute="height" constant="30" id="iHb-Xd-M79"/>
+                                        <constraint firstAttribute="width" id="bJi-4x-ZBT"/>
+                                        <constraint firstAttribute="height" id="iHb-Xd-M79"/>
                                     </constraints>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <state key="normal" title="Coin Swop">
@@ -312,13 +312,13 @@
                                 <constraint firstAttribute="trailing" secondItem="Ttf-yn-6mZ" secondAttribute="trailing" id="0hM-Hy-mmu"/>
                                 <constraint firstItem="Kca-Cu-ICi" firstAttribute="leading" secondItem="KOv-ha-IOZ" secondAttribute="leading" id="4Gy-Iw-N55"/>
                                 <constraint firstAttribute="bottom" secondItem="mks-0N-oQf" secondAttribute="bottom" constant="3" id="5el-E9-oes"/>
+                                <constraint firstAttribute="trailing" secondItem="QCQ-mf-Uss" secondAttribute="trailing" constant="8" id="6eT-Fg-c4W"/>
+                                <constraint firstItem="QCQ-mf-Uss" firstAttribute="width" secondItem="PQC-SO-ifL" secondAttribute="width" id="6gQ-j8-y5N"/>
                                 <constraint firstItem="Ttf-yn-6mZ" firstAttribute="leading" secondItem="KOv-ha-IOZ" secondAttribute="leading" id="AIj-d9-l9d"/>
                                 <constraint firstItem="mks-0N-oQf" firstAttribute="centerX" secondItem="KOv-ha-IOZ" secondAttribute="centerX" id="CwT-cI-u9v"/>
                                 <constraint firstItem="Kca-Cu-ICi" firstAttribute="top" secondItem="YZ8-Qy-EIP" secondAttribute="bottom" id="DmK-kt-T0i"/>
                                 <constraint firstItem="QCQ-mf-Uss" firstAttribute="centerY" secondItem="aGk-na-cTL" secondAttribute="centerY" id="EJa-ui-CsY"/>
                                 <constraint firstAttribute="trailing" secondItem="Kca-Cu-ICi" secondAttribute="trailing" id="IN1-lt-IzA"/>
-                                <constraint firstItem="aGk-na-cTL" firstAttribute="leading" secondItem="QCQ-mf-Uss" secondAttribute="trailing" constant="8" id="Kea-Ui-y1W"/>
-                                <constraint firstItem="QCQ-mf-Uss" firstAttribute="centerX" secondItem="KOv-ha-IOZ" secondAttribute="centerX" id="NLc-ZO-fEA"/>
                                 <constraint firstItem="QCQ-mf-Uss" firstAttribute="centerY" secondItem="PQC-SO-ifL" secondAttribute="centerY" id="UOo-eL-kQP"/>
                                 <constraint firstAttribute="trailing" secondItem="YZ8-Qy-EIP" secondAttribute="trailing" id="V3p-Yq-ApO"/>
                                 <constraint firstItem="PQC-SO-ifL" firstAttribute="leading" secondItem="KOv-ha-IOZ" secondAttribute="leading" constant="8" id="Vza-Zh-OJz"/>
@@ -326,10 +326,10 @@
                                 <constraint firstAttribute="trailing" secondItem="aGk-na-cTL" secondAttribute="trailing" constant="8" id="XGa-HW-bil"/>
                                 <constraint firstItem="YZ8-Qy-EIP" firstAttribute="top" secondItem="KOv-ha-IOZ" secondAttribute="top" id="axb-et-mko"/>
                                 <constraint firstItem="YZ8-Qy-EIP" firstAttribute="leading" secondItem="KOv-ha-IOZ" secondAttribute="leading" id="fvI-WA-WPt"/>
-                                <constraint firstItem="QCQ-mf-Uss" firstAttribute="leading" secondItem="PQC-SO-ifL" secondAttribute="trailing" constant="8" id="hel-Jz-ImI"/>
                                 <constraint firstAttribute="bottom" secondItem="QCQ-mf-Uss" secondAttribute="bottom" constant="8" id="hve-cf-UZu"/>
                                 <constraint firstAttribute="trailing" secondItem="ggk-Eo-Z63" secondAttribute="trailing" id="lkx-sK-6a3"/>
                                 <constraint firstItem="ggk-Eo-Z63" firstAttribute="top" secondItem="Ttf-yn-6mZ" secondAttribute="bottom" id="ms7-Vu-FRz"/>
+                                <constraint firstItem="PQC-SO-ifL" firstAttribute="width" secondItem="KOv-ha-IOZ" secondAttribute="width" multiplier="0.4" id="nGX-xp-2YC"/>
                                 <constraint firstAttribute="height" constant="640" id="tPK-Gh-Prm"/>
                                 <constraint firstItem="ggk-Eo-Z63" firstAttribute="leading" secondItem="KOv-ha-IOZ" secondAttribute="leading" id="vCE-b2-RTA"/>
                             </constraints>
@@ -360,10 +360,10 @@
         </view>
     </objects>
     <resources>
-        <image name="back_icon.png" width="16" height="16"/>
+        <image name="back_icon.png" width="13" height="9"/>
         <image name="bg.png" width="751" height="172"/>
         <image name="left_arrow.png" width="35" height="67"/>
-        <image name="location.png" width="16" height="16"/>
+        <image name="location.png" width="16" height="15"/>
         <image name="placeholder.png" width="693" height="464"/>
         <image name="right_arrow.png" width="35" height="67"/>
     </resources>

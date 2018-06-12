@@ -80,4 +80,5 @@ class Constants: NSObject {
     static let KEY_DISTANCE = "Distance"
     static let KEY_NEW_MESSAGE_COUNT = "NewMessageCount"
     static let KEY_SUBCATEGORY_ID = "SubCategoryId"
+    static let KEY_DEVICE_TOKEN = "DeviceToken"
 }

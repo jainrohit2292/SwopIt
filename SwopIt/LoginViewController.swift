@@ -64,7 +64,7 @@ class LoginViewController: UIViewController {
     }
     
     func authenticate(username: String, password: String){
-        let params = ["Username": username, "Password":password, Constants.KEY_DEVICE_ID:String(Utils.getDeviceId())]
+        let params = ["Username": username, "Password":password, Constants.KEY_DEVICE_ID:Utils.getDeviceToken()]
         MBProgressHUD.showAdded(to: self.view, animated: false)
         Utils.httpCall(url: Constants.AUTHENTICATION_URL, params: params as [String : AnyObject]?, httpMethod: Constants.HTTP_METHOD_POST) { (resp) in
             MBProgressHUD.hide(for: self.view, animated: false)

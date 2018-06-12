@@ -153,10 +153,8 @@ class ChatViewController: JSQMessagesViewController  {
             for msg in chatMsgs!{
                 let chatMsg = ChatMessage(dict: msg)
                 self.chatMessages.append(chatMsg)
-                let formatter = DateFormatter()
-                formatter.dateFormat = "dd MMM yyyy HH:mm a"
-                let dateValue = formatter.date(from: chatMsg.dateStr!)
-                let msgg = JSQMessage(senderId: chatMsg.sender , senderDisplayName: "" , date: dateValue, text:chatMsg.message )
+                let date = Date(timeIntervalSince1970: chatMsg.timeStamp!)
+                let msgg = JSQMessage(senderId: chatMsg.sender , senderDisplayName: "" , date: date, text:chatMsg.message )
                 self.messages.append(msgg!)
             }
             self.finishReceivingMessage()
@@ -181,10 +179,8 @@ class ChatViewController: JSQMessagesViewController  {
             for msg in chatMsgs{
                 let chatMsg = ChatMessage(dict: msg)
                 self.chatMessages.append(chatMsg)
-                let formatter = DateFormatter()
-                formatter.dateFormat = "dd MMM yyyy HH:mm a"
-                let dateValue = formatter.date(from: chatMsg.dateStr!)
-                let msgg = JSQMessage(senderId: chatMsg.sender , senderDisplayName: chatMsg.sender , date: dateValue, text:chatMsg.message )
+                let date = Date(timeIntervalSince1970: chatMsg.timeStamp!)
+                let msgg = JSQMessage(senderId: chatMsg.sender , senderDisplayName: chatMsg.sender , date: date, text:chatMsg.message )
                 self.messages.append(msgg!)
             }
             self.finishReceivingMessage()

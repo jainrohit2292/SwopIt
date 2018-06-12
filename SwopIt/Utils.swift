@@ -60,6 +60,16 @@ class Utils: NSObject {
         defaults.set(String(val), forKey: Constants.KEY_DISTANCE)
     }
     
+    static func getDeviceToken() -> String?{
+        let defaults = UserDefaults.standard
+        let dist =  (defaults.value(forKey: Constants.KEY_DEVICE_TOKEN) as? String)
+        return dist
+    }
+    static func setDeviceToken(val: String){
+        let defaults = UserDefaults.standard
+        defaults.set(String(val), forKey: Constants.KEY_DEVICE_TOKEN)
+    }
+    
     static func getNewMessageCount() -> String?{
         let defaults = UserDefaults.standard
         let dist =  (defaults.value(forKey: Constants.KEY_NEW_MESSAGE_COUNT) as? String)
