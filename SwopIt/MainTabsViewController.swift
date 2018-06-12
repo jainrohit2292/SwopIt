@@ -216,16 +216,9 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath){
         switch indexPath.row {
         case 0:
-//            if(Utils.isUserLoggedin()){
-//            self.present(ProfileViewController(), animated: false, completion: {
-//                
-//            })
-//            }
-//            else{
                 self.present(SettingsViewController(), animated: false, completion: {
                     
                 })
-//            }
             break
         case 1:
             if(Utils.isUserLoggedin()){
@@ -237,9 +230,6 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
                 let chatAndReqVC = ChatAndRequestsViewController(nibName: "ChatAndRequestsViewController", bundle: nil, delegate: self)
               selectedVC.pushViewController(chatAndReqVC, animated: false)
             }
-//            self.present(SettingsViewController(), animated: false, completion: {
-//                
-//            })
             else{
                 let loginVC = LoginViewController()
                 self.present(loginVC, animated: false, completion: nil)
