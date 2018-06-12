@@ -110,7 +110,7 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
         self.delegates.append(itemsVC)
         let dealsVC = MyDealsViewController()
         let savedVC = SavedViewController()
-        let chatVC = ChatListViewController(nibName: "ChatListViewController", bundle: nil, delegate: self)
+        let chatVC = ChatAndRequestsViewController(nibName: "ChatAndRequestsViewController", bundle: nil, delegate: self)
         let navigationVC1 = UINavigationController()
         navigationVC1.navigationBar.isHidden = true
         let navigationVC2 = UINavigationController()
