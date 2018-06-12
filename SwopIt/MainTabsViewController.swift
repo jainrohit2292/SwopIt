@@ -20,7 +20,7 @@ protocol SwopItTabBarHandlerProtocol {
     func presentVC(vc: UIViewController)
 }
 
-class MainTabsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SwopItTabBarHandlerProtocol, UITabBarControllerDelegate {
+class MainTabsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SwopItTabBarHandlerProtocol, UITabBarControllerDelegate, UISearchBarDelegate {
     @IBOutlet weak var showCategoriesButton: UIButton!
 
     @IBOutlet weak var leftMenuTopBtn: UIButton!
@@ -68,6 +68,7 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
         self.getAllCategories()
         self.searchView.isHidden = true
         self.mainUserNameLbl.text = Utils.getLoggedInUserName()
+        searchBar.delegate = self
         NotificationCenter.default.addObserver(self, selector: #selector(self.updateMenu(_:)), name: NSNotification.Name(rawValue: "updateMenu"), object: nil)
     }
     override func viewWillAppear(_ animated: Bool) {
@@ -181,19 +182,10 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBAction func onMenuButtonPressed(_ sender: Any) {
         if(self.isMenuVisible){
-//            UIView.animate(withDuration: 2.0, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-//                self.menuViewLeadingConstraint.constant = -self.menuView.frame.width
-//            }, completion: nil)
             hideMenu()
-            
+        }else{
+            showMenu()
         }
-        else{
-//            UIView.animate(withDuration: 2.0, delay: 0.0, options: UIViewAnimationOptions.curveEaseOut, animations: {
-//                self.menuViewLeadingConstraint.constant = 0
-//                self.menuView.layoutIfNeeded()
-//            }, completion: nil)
-                    showMenu()
-                    }
         self.isMenuVisible = !self.isMenuVisible
     }
     func hideMenu(){
@@ -204,7 +196,8 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
             self.addItemsView.isHidden = false
             self.searchButton.isHidden = false
             self.tab?.tabBar.isHidden = false
-//            self.totalCoinsLbl.isHidden = false
+            self.showCategoriesButton.isHidden = false
+            self.tabsView.isUserInteractionEnabled = true
         })
     }
     func showMenu(){
@@ -215,7 +208,8 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
             self.addItemsView.isHidden = true
             self.searchButton.isHidden = true
             self.tab?.tabBar.isHidden = true
-//            self.totalCoinsLbl.isHidden = true
+            self.showCategoriesButton.isHidden = true
+            self.tabsView.isUserInteractionEnabled = false
         })
 
     }
@@ -376,7 +370,8 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
             self.addItemsView.isHidden = false
             self.searchButton.isHidden = false
             self.tab?.tabBar.isHidden = false
-//            self.totalCoinsLbl.isHidden = false
+            self.showCategoriesButton.isHidden = false
+            self.tabsView.isUserInteractionEnabled = true
         })
 
     }
@@ -421,5 +416,15 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
         
         let chatAndReqVC = ChatAndRequestsViewController(nibName: "ChatAndRequestsViewController", bundle: nil, delegate: self)
         selectedVC.pushViewController(chatAndReqVC, animated: false)
+    }
+    
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        for delegate in self.delegates{
+            if(searchText.isEmpty){
+                delegate.refreshAfterSearch()
+            }else{
+                delegate.searchItemBy(text: searchText)
+            }
+        }
     }
 }

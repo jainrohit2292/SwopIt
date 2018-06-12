@@ -267,7 +267,7 @@
                                     </constraints>
                                 </view>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="PQC-SO-ifL">
-                                    <rect key="frame" x="8" y="603" width="150" height="30"/>
+                                    <rect key="frame" x="8" y="603" width="169" height="30"/>
                                     <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                     <constraints>
                                         <constraint firstAttribute="height" constant="30" id="b4R-cR-BqB"/>
@@ -281,7 +281,7 @@
                                     </connections>
                                 </button>
                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QCQ-mf-Uss">
-                                    <rect key="frame" x="217" y="604" width="150" height="28"/>
+                                    <rect key="frame" x="198.5" y="604" width="168.5" height="28"/>
                                     <color key="backgroundColor" red="0.0" green="0.59999999999999998" blue="0.91764705882352937" alpha="1" colorSpace="calibratedRGB"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                     <state key="normal" title="DS Swop">
@@ -329,7 +329,7 @@
                                 <constraint firstAttribute="bottom" secondItem="QCQ-mf-Uss" secondAttribute="bottom" constant="8" id="hve-cf-UZu"/>
                                 <constraint firstAttribute="trailing" secondItem="ggk-Eo-Z63" secondAttribute="trailing" id="lkx-sK-6a3"/>
                                 <constraint firstItem="ggk-Eo-Z63" firstAttribute="top" secondItem="Ttf-yn-6mZ" secondAttribute="bottom" id="ms7-Vu-FRz"/>
-                                <constraint firstItem="PQC-SO-ifL" firstAttribute="width" secondItem="KOv-ha-IOZ" secondAttribute="width" multiplier="0.4" id="nGX-xp-2YC"/>
+                                <constraint firstItem="PQC-SO-ifL" firstAttribute="width" secondItem="KOv-ha-IOZ" secondAttribute="width" multiplier="0.45" id="nGX-xp-2YC"/>
                                 <constraint firstAttribute="height" constant="640" id="tPK-Gh-Prm"/>
                                 <constraint firstItem="ggk-Eo-Z63" firstAttribute="leading" secondItem="KOv-ha-IOZ" secondAttribute="leading" id="vCE-b2-RTA"/>
                             </constraints>
