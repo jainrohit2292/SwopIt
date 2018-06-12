@@ -21,18 +21,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_bg.png" translatesAutoresizingMaskIntoConstraints="NO" id="r1X-V9-ptv">
+                            <imageView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash.png" translatesAutoresizingMaskIntoConstraints="NO" id="r1X-V9-ptv">
                                 <rect key="frame" x="0.0" y="-40" width="375" height="707"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="splash_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="aRP-Q3-AlH">
-                                <rect key="frame" x="141" y="272.5" width="92" height="121"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="aRP-Q3-AlH" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="DcN-ff-lEI"/>
                             <constraint firstItem="r1X-V9-ptv" firstAttribute="top" secondItem="Llm-lL-Icb" secondAttribute="bottom" constant="-60" id="Lak-d1-93E"/>
-                            <constraint firstItem="aRP-Q3-AlH" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ND2-tn-tvk"/>
                             <constraint firstItem="r1X-V9-ptv" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="eQP-Rk-xVx"/>
                             <constraint firstAttribute="trailing" secondItem="r1X-V9-ptv" secondAttribute="trailing" id="r9B-1W-Hn4"/>
                             <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="r1X-V9-ptv" secondAttribute="bottom" id="xzU-zf-tlT"/>
@@ -45,7 +40,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="splash_bg.png" width="767" height="1279"/>
-        <image name="splash_icon.png" width="92" height="121"/>
+        <image name="splash.png" width="767" height="1279"/>
     </resources>
 </document>
