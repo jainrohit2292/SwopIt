@@ -10,7 +10,7 @@ import UIKit
 import MBProgressHUD
 
 
-class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource{
+class ChatListViewController: UIViewController, UITableViewDelegate, UITableViewDataSource, SwopperProfileProtocol{
 
     @IBOutlet weak var chatsListTableView: UITableView!
     var chatListUsers = [User]()
@@ -46,6 +46,7 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell{
         let cell: ChatListTableViewCell = tableView.dequeueReusableCell(withIdentifier: "ChatListTableViewCell", for: indexPath as IndexPath) as! ChatListTableViewCell
         cell.updateCell(user: self.chatListUsers[indexPath.row])
+        cell.delegate = self
         return cell
     }
     
@@ -82,5 +83,11 @@ class ChatListViewController: UIViewController, UITableViewDelegate, UITableView
             }
             self.chatsListTableView.reloadData()
         }
+    }
+    
+    func openSwopperProfile(user: User){
+        let swopperVC = SwopperProfileViewController()
+        swopperVC.user = user
+        self.delegate?.presentVC(vc: swopperVC)
     }
 }

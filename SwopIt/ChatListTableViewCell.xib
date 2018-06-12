@@ -26,6 +26,12 @@
                             <constraint firstAttribute="width" constant="50" id="TER-FY-DyM"/>
                         </constraints>
                     </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vyF-c1-f1e" userLabel="Profile Btn">
+                        <rect key="frame" x="8" y="8" width="50" height="50"/>
+                        <connections>
+                            <action selector="profileBtnTapped:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="CeZ-cN-OLO"/>
+                        </connections>
+                    </button>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ucf-a2-gRM">
                         <rect key="frame" x="66" y="8" width="36" height="16"/>
                         <fontDescription key="fontDescription" type="boldSystem" pointSize="13"/>
@@ -46,14 +52,18 @@
                     </label>
                 </subviews>
                 <constraints>
+                    <constraint firstItem="vyF-c1-f1e" firstAttribute="leading" secondItem="uuN-eS-kHA" secondAttribute="leading" id="0DO-2k-A2s"/>
                     <constraint firstItem="uuN-eS-kHA" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="0jG-aK-dnY"/>
                     <constraint firstItem="Ucf-a2-gRM" firstAttribute="leading" secondItem="uuN-eS-kHA" secondAttribute="trailing" constant="8" id="2Dp-nT-cui"/>
                     <constraint firstItem="yRW-II-mft" firstAttribute="top" secondItem="Ucf-a2-gRM" secondAttribute="top" id="Csc-EW-TCu"/>
                     <constraint firstItem="ROg-6i-nEG" firstAttribute="leading" secondItem="Ucf-a2-gRM" secondAttribute="leading" id="EPq-dK-4j3"/>
                     <constraint firstItem="uuN-eS-kHA" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="Ja5-2q-WxH"/>
+                    <constraint firstItem="vyF-c1-f1e" firstAttribute="bottom" secondItem="uuN-eS-kHA" secondAttribute="bottom" id="kSb-ZE-JDv"/>
                     <constraint firstItem="Ucf-a2-gRM" firstAttribute="top" secondItem="uuN-eS-kHA" secondAttribute="top" id="lHS-ql-Elr"/>
                     <constraint firstItem="ROg-6i-nEG" firstAttribute="top" secondItem="Ucf-a2-gRM" secondAttribute="bottom" constant="3" id="tPz-Xc-kpt"/>
+                    <constraint firstItem="vyF-c1-f1e" firstAttribute="top" secondItem="uuN-eS-kHA" secondAttribute="top" id="vrE-JL-gfY"/>
                     <constraint firstAttribute="trailingMargin" secondItem="yRW-II-mft" secondAttribute="trailing" constant="8" id="wyk-Fd-4Xh"/>
+                    <constraint firstItem="vyF-c1-f1e" firstAttribute="trailing" secondItem="uuN-eS-kHA" secondAttribute="trailing" id="xnm-EH-6xn"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

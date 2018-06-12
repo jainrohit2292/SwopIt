@@ -8,13 +8,20 @@
 
 import UIKit
 import SDWebImage
+
+protocol SwopperProfileProtocol: class {
+    func openSwopperProfile(user: User)
+}
+
 class ChatListTableViewCell: UITableViewCell {
 
     @IBOutlet weak var dateLbl: UILabel!
-   
     @IBOutlet weak var msgLbl: UILabel!
     @IBOutlet weak var usernameLbl: UILabel!
     @IBOutlet weak var profileImgV: UIImageView!
+    weak var delegate: SwopperProfileProtocol?
+    var currentUser: User?
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -25,6 +32,7 @@ class ChatListTableViewCell: UITableViewCell {
         
     }
     func updateCell(user: User){
+        self.currentUser = user
         let picUrl = URL(string: Constants.GET_PROFILE_PIC_URL + user.profilePictureUrl!)
         if(picUrl != nil){
             self.profileImgV.sd_setImage(with: picUrl!, placeholderImage: UIImage(named: "profile_placeholder"))
@@ -35,4 +43,7 @@ class ChatListTableViewCell: UITableViewCell {
         self.msgLbl.text = user.about
     }
     
+    @IBAction func profileBtnTapped(_ sender: UIButton) {
+        self.delegate?.openSwopperProfile(user: currentUser!)
+    }
 }
