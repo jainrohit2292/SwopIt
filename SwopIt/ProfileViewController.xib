@@ -148,7 +148,7 @@
                     <rect key="frame" x="0.0" y="401" width="375" height="266"/>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                 </tableView>
-                <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1K-jD-jQD">
+                <view hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f1K-jD-jQD">
                     <rect key="frame" x="0.0" y="320" width="375" height="40"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="buy_swap_icon.png" translatesAutoresizingMaskIntoConstraints="NO" id="RDD-H7-bJP">
@@ -341,7 +341,7 @@
                         <constraint firstAttribute="height" constant="1" id="YN8-2u-6zq"/>
                     </constraints>
                 </view>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EMZ-8P-RZw">
+                <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="EMZ-8P-RZw">
                     <rect key="frame" x="0.0" y="320" width="375" height="347"/>
                     <subviews>
                         <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="sDU-Om-BkF">

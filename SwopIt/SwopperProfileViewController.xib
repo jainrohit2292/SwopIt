@@ -11,6 +11,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SwopperProfileViewController" customModule="SwopIt" customModuleProvider="target">
             <connections>
+                <outlet property="about" destination="LFq-P4-Q2V" id="bff-eY-ZeZ"/>
                 <outlet property="nameLbl" destination="aXk-ic-1bL" id="VWd-Ia-XOG"/>
                 <outlet property="profileImageV" destination="7VO-A9-r40" id="cxg-wn-j87"/>
                 <outlet property="view" destination="QOI-0k-bpr" id="Bn4-10-pta"/>
@@ -85,14 +86,23 @@
                             <nil key="textColor"/>
                             <nil key="highlightedColor"/>
                         </label>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LFq-P4-Q2V" userLabel="About">
+                            <rect key="frame" x="20" y="135" width="335" height="0.0"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                            <nil key="textColor"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="aXk-ic-1bL" firstAttribute="top" secondItem="lYh-jq-8cQ" secondAttribute="bottom" constant="15" id="0SG-3l-DuJ"/>
                         <constraint firstItem="lYh-jq-8cQ" firstAttribute="top" secondItem="2Jy-Gd-DB1" secondAttribute="top" constant="15" id="EGz-Ba-myW"/>
+                        <constraint firstItem="LFq-P4-Q2V" firstAttribute="top" secondItem="aXk-ic-1bL" secondAttribute="bottom" constant="5" id="HNi-WO-3El"/>
                         <constraint firstAttribute="height" constant="250" id="Ja4-f5-YXU"/>
                         <constraint firstItem="aXk-ic-1bL" firstAttribute="leading" secondItem="2Jy-Gd-DB1" secondAttribute="leading" constant="20" id="j67-A9-mfF"/>
                         <constraint firstAttribute="trailing" secondItem="aXk-ic-1bL" secondAttribute="trailing" constant="20" id="kUK-Mw-My3"/>
+                        <constraint firstItem="LFq-P4-Q2V" firstAttribute="leading" secondItem="2Jy-Gd-DB1" secondAttribute="leading" constant="20" id="oD5-Bs-uUl"/>
+                        <constraint firstAttribute="trailing" secondItem="LFq-P4-Q2V" secondAttribute="trailing" constant="20" id="xOn-Ho-48h"/>
                         <constraint firstItem="lYh-jq-8cQ" firstAttribute="centerX" secondItem="2Jy-Gd-DB1" secondAttribute="centerX" id="xSg-Cs-Gyf"/>
                     </constraints>
                 </view>
