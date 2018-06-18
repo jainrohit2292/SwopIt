@@ -58,10 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         application.registerForRemoteNotifications()
-        if let refreshedToken = FIRInstanceID.instanceID().token() {
-            print("noti InstanceID token: \(refreshedToken)")
-            Utils.setDeviceToken(val: refreshedToken)
-        }
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
