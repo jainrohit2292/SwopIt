@@ -40,6 +40,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
     
     func registerWithFriebaseForNotifications(application: UIApplication){
+        FIRApp.configure()
+
         if #available(iOS 10.0, *) {
             // For iOS 10 display notification (sent via APNS)
             UNUserNotificationCenter.current().delegate = self
@@ -56,14 +58,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         }
         
         application.registerForRemoteNotifications()
-        
-        FIRApp.configure()
+        if let refreshedToken = FIRInstanceID.instanceID().token() {
+            print("noti InstanceID token: \(refreshedToken)")
+            Utils.setDeviceToken(val: refreshedToken)
+        }
     }
     
     func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
         let tokenString = deviceToken.reduce("", {$0 + String(format: "%02X",    $1)})
-        Utils.setDeviceToken(val: tokenString)
         print("deviceToken: \(tokenString)")
+        if let refreshedToken = FIRInstanceID.instanceID().token() {
+            print("noti InstanceID token: \(refreshedToken)")
+            Utils.setDeviceToken(val: refreshedToken)
+        }
     }
     
     func tokenRefreshNotification(notification: NSNotification) {
@@ -71,6 +78,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         if let refreshedToken = FIRInstanceID.instanceID().token() {
             print("noti InstanceID token: \(refreshedToken)")
+            Utils.setDeviceToken(val: refreshedToken)
         }
     }
     
@@ -104,12 +112,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let url = Constants.GET_NEW_MESSAGE_COUNT
         let params = [Constants.KEY_USER_ID :  Utils.getLoggedInUserId()]
         Utils.httpCall(url: url, params: params as [String : AnyObject]?, httpMethod: Constants.HTTP_METHOD_POST) { (resp) in
-            let respCode = (resp?[Constants.KEY_RESPONSE_CODE] as! Int)
-            if(respCode == 1){
-                let a = resp?["Response"] as! [String : AnyObject]
-                let count = a["Count"] as! Int
-                Utils.setNewMessageCount(val: count)
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateMenu"), object: nil)
+            if let respose = resp{
+                let respCode = (respose[Constants.KEY_RESPONSE_CODE] as! Int)
+                if(respCode == 1){
+                    let a = respose["Response"] as! [String : AnyObject]
+                    let count = a["Count"] as! Int
+                    Utils.setNewMessageCount(val: count)
+                    NotificationCenter.default.post(name: NSNotification.Name(rawValue: "updateMenu"), object: nil)
+                }
             }
         }
     }

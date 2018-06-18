@@ -10,6 +10,7 @@ import UIKit
 import MBProgressHUD
 import FirebaseMessaging
 import FirebaseCore
+import Firebase
 
 class LoginViewController: UIViewController {
     
@@ -64,7 +65,14 @@ class LoginViewController: UIViewController {
     }
     
     func authenticate(username: String, password: String){
-        let params = ["Username": username, "Password":password, Constants.KEY_DEVICE_ID:Utils.getDeviceToken()]
+        var token: String = ""
+        if Utils.getDeviceToken() != nil {
+            token = Utils.getDeviceToken()!
+        }else if let fcmToken = FIRInstanceID.instanceID().token(){
+            token = fcmToken
+        }
+        let params = ["Username": username, "Password":password, Constants.KEY_DEVICE_ID:token]
+        
         MBProgressHUD.showAdded(to: self.view, animated: false)
         Utils.httpCall(url: Constants.AUTHENTICATION_URL, params: params as [String : AnyObject]?, httpMethod: Constants.HTTP_METHOD_POST) { (resp) in
             MBProgressHUD.hide(for: self.view, animated: false)
@@ -73,7 +81,7 @@ class LoginViewController: UIViewController {
                 let usr = ModelFactory.createUser(dict: resp!)
                 if(Utils.saveUserToPrefs(user: usr)){
                     self.present(MainTabsViewController(), animated: false, completion: {
-                      FIRMessaging.messaging().subscribe(toTopic: usr.username!)
+                     // FIRMessaging.messaging().subscribe(toTopic: usr.username!)
                     })
                 }
                 else{

@@ -301,23 +301,40 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
     }
     
     @IBAction func logOut(_ sender: Any) {
-        let defaults = UserDefaults.standard
         let alert = UIAlertController(title: "SwopIt", message: "Are you sure to log out?", preferredStyle: UIAlertControllerStyle.alert)
         alert.addAction(UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
-                        //        defaults.set(nil, forKey:"userId")
-            defaults.removeObject(forKey: Constants.KEY_USER_ID)
-            defaults.removeObject(forKey: Constants.KEY_USERNAME)
-            defaults.removeObject(forKey: Constants.KEY_NAME)
-            defaults.removeObject(forKey: Constants.KEY_PROFILE_PICTURE)
-            self.dismiss(animated: false, completion: nil)
-            
+            self.performLogout()
         }))
         alert.addAction(UIAlertAction(title: "NO", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
             print("Handle Ok logic here")
         }))
         self.present(alert, animated: true, completion: nil)
+    }
     
-
+    func performLogout() {
+        if(!Reachability.isConnectedToNetwork()){
+            Utils.showAlert(title: "SwopIt", msg: "Pease connect to network.", vc: self)
+            return
+        }
+        let defaults = UserDefaults.standard
+        let name = (defaults.value(forKey: Constants.KEY_USERNAME) as! String)
+        let params = ["Username": name]
+        
+        MBProgressHUD.showAdded(to: self.view, animated: false)
+        Utils.httpCall(url: Constants.LOGOUT_URL, params: params as [String : AnyObject]?, httpMethod: Constants.HTTP_METHOD_POST) { (resp) in
+            MBProgressHUD.hide(for: self.view, animated: false)
+            if((resp?[Constants.KEY_RESPONSE_CODE] as! Int) == 1){
+                let defaults = UserDefaults.standard
+                defaults.removeObject(forKey: Constants.KEY_USER_ID)
+                defaults.removeObject(forKey: Constants.KEY_USERNAME)
+                defaults.removeObject(forKey: Constants.KEY_NAME)
+                defaults.removeObject(forKey: Constants.KEY_PROFILE_PICTURE)
+                self.dismiss(animated: false, completion: nil)
+            }
+            else{
+                Utils.showAlert(title: "SwopIt", msg: "Cannot logout please try again.", vc: self)
+            }
+        }
     }
     
     func getAllCategories(){
@@ -326,7 +343,7 @@ class ProfileViewController: UIViewController, UIImagePickerControllerDelegate, 
             return
         }
         MBProgressHUD.showAdded(to: self.view, animated: false)
-        Utils.httpCall(url: Constants.GET_ALL_CATEGORIES_URL, params: nil, httpMethod: "POST") { (resp) in
+        Utils.httpCall(url: Constants.GET_ALL_CATEGORIES_URL, params: nil, httpMethod: "GET") { (resp) in
             MBProgressHUD.hide(for: self.view, animated: false)
             if(resp != nil){
                 self.cats = ModelFactory.createCategoriesList(dict: resp!)

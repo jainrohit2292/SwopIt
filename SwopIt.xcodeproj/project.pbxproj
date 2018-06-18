@@ -190,9 +190,9 @@
 		2BF78F9B1EF36C850057F82C /* chat-inactive-tabs.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF78F971EF36C850057F82C /* chat-inactive-tabs.png */; };
 		2BF78F9C1EF36C850057F82C /* swop-list-active-tabs.png in Resources */ = {isa = PBXBuildFile; fileRef = 2BF78F981EF36C850057F82C /* swop-list-active-tabs.png */; };
 		7FC772719156BB270FBFF785 /* Pods_SwopIt.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9DF73C71AD7611B1ABBDAB01 /* Pods_SwopIt.framework */; };
-		A62BC7B820C8049D00AC2738 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A62BC7B720C8049D00AC2738 /* GoogleService-Info.plist */; };
 		A62BC7BA20C8613300AC2738 /* ColorExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = A62BC7B920C8613300AC2738 /* ColorExtension.swift */; };
 		A62BC7BC20C863D500AC2738 /* radioBtn.png in Resources */ = {isa = PBXBuildFile; fileRef = A62BC7BB20C863D400AC2738 /* radioBtn.png */; };
+		A6412FA920D826E00056F3BE /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = A6412FA820D826DF0056F3BE /* GoogleService-Info.plist */; };
 		F1BD004B87C9E3E097FFB082 /* Pods_SwopItTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFE9A60E7460D4E3F8144A2B /* Pods_SwopItTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -408,9 +408,9 @@
 		52A0F5C5313DE6C5955AB1D0 /* Pods-SwopIt.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwopIt.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwopIt/Pods-SwopIt.debug.xcconfig"; sourceTree = "<group>"; };
 		5D18B3B355E9B195DC5EFD02 /* Pods-SwopItUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwopItUITests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SwopItUITests/Pods-SwopItUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		9DF73C71AD7611B1ABBDAB01 /* Pods_SwopIt.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwopIt.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		A62BC7B720C8049D00AC2738 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		A62BC7B920C8613300AC2738 /* ColorExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtension.swift; sourceTree = "<group>"; };
 		A62BC7BB20C863D400AC2738 /* radioBtn.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = radioBtn.png; sourceTree = "<group>"; };
+		A6412FA820D826DF0056F3BE /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = SOURCE_ROOT; };
 		A7354D3CDB9AD2705A2C6C12 /* Pods-SwopItTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SwopItTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-SwopItTests/Pods-SwopItTests.release.xcconfig"; sourceTree = "<group>"; };
 		E5C237AA200AC66C07A1AA84 /* Pods_SwopItUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwopItUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FFE9A60E7460D4E3F8144A2B /* Pods_SwopItTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SwopItTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -709,6 +709,7 @@
 		2B93A3B01E5077BA00E8764F /* SwopIt */ = {
 			isa = PBXGroup;
 			children = (
+				A6412FA820D826DF0056F3BE /* GoogleService-Info.plist */,
 				2BB645FA1EF1B3EE001B1071 /* SwopIt.entitlements */,
 				2B83C3B31E76DC2700B329ED /* CustomViews */,
 				2B2A25EC1E70519000D1C10C /* Images */,
@@ -726,7 +727,6 @@
 				2B93A3C01E5077BA00E8764F /* Info.plist */,
 				2B93A3B81E5077BA00E8764F /* SwopIt.xcdatamodeld */,
 				2B376D2B1ECA571000D82699 /* IAPHelper.swift */,
-				A62BC7B720C8049D00AC2738 /* GoogleService-Info.plist */,
 			);
 			path = SwopIt;
 			sourceTree = "<group>";
@@ -1003,7 +1003,6 @@
 				2B5C25671EB257BA00C5826C /* reject_button@3x.png in Resources */,
 				2B83C3ED1E79A90500B329ED /* furniture_active.png in Resources */,
 				2B441B8B1E87D6680012780A /* my_deals_inactive@3x.png in Resources */,
-				A62BC7B820C8049D00AC2738 /* GoogleService-Info.plist in Resources */,
 				2B166E041E6850100031AB6A /* UpdateProfileViewController.xib in Resources */,
 				2B75A9DA1E9C115F002195E2 /* profile_placeholder@3x.png in Resources */,
 				2B7949EE1E87BA5300A7CEC4 /* mobile_inactive.png in Resources */,
@@ -1053,6 +1052,7 @@
 				2B75A9D81E9A9E31002195E2 /* history.png in Resources */,
 				2B441B911E87D6680012780A /* swop_list_active.png in Resources */,
 				2B441B781E87D57E0012780A /* bookandart_active.png in Resources */,
+				A6412FA920D826E00056F3BE /* GoogleService-Info.plist in Resources */,
 				2B93A3BC1E5077BA00E8764F /* Assets.xcassets in Resources */,
 				2BEFE4F11EE0930E00FCFA94 /* address.png in Resources */,
 				2B7949F51E87BAD700A7CEC4 /* art_active.png in Resources */,

@@ -269,22 +269,9 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
             break
         case 6:
             if(Utils.isUserLoggedin()){
-                let defaults = UserDefaults.standard
                 let alert = UIAlertController(title: "SwopIt", message: "Are you sure to log out?", preferredStyle: UIAlertControllerStyle.alert)
                 alert.addAction(UIAlertAction(title: "YES", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
-                    //        defaults.set(nil, forKey:"userId")
-                    defaults.removeObject(forKey: Constants.KEY_USER_ID)
-                    defaults.removeObject(forKey: Constants.KEY_USERNAME)
-                    defaults.removeObject(forKey: Constants.KEY_NAME)
-                    defaults.removeObject(forKey: Constants.KEY_PROFILE_PICTURE)
-                    self.signInSingUpView.isHidden = false
-                    self.loginSignupViewHeightConstraint.constant = 25
-                
-                    self.initMenu()
-                    for delegate in self.delegates{
-                        delegate.refreshAfterSearch()
-                    }
-                    
+                    self.performLogout()
                 }))
                 alert.addAction(UIAlertAction(title: "NO", style: UIAlertActionStyle.default, handler: {(action: UIAlertAction!) in
                     print("Handle Ok logic here")
@@ -297,6 +284,41 @@ class MainTabsViewController: UIViewController, UITableViewDelegate, UITableView
             break
         }
     }
+    
+    func performLogout() {
+        if(!Reachability.isConnectedToNetwork()){
+            Utils.showAlert(title: "SwopIt", msg: "Pease connect to network.", vc: self)
+            return
+        }
+        let defaults = UserDefaults.standard
+        let name = (defaults.value(forKey: Constants.KEY_USERNAME) as! String)
+        let params = ["Username": name]
+        
+        MBProgressHUD.showAdded(to: self.view, animated: false)
+        Utils.httpCall(url: Constants.LOGOUT_URL, params: params as [String : AnyObject]?, httpMethod: Constants.HTTP_METHOD_POST) { (resp) in
+            MBProgressHUD.hide(for: self.view, animated: false)
+            self.hideMenu()
+            if((resp?[Constants.KEY_RESPONSE_CODE] as! Int) == 1){
+                let defaults = UserDefaults.standard
+                defaults.removeObject(forKey: Constants.KEY_USER_ID)
+                defaults.removeObject(forKey: Constants.KEY_USERNAME)
+                defaults.removeObject(forKey: Constants.KEY_NAME)
+                defaults.removeObject(forKey: Constants.KEY_PROFILE_PICTURE)
+                self.signInSingUpView.isHidden = false
+                self.loginSignupViewHeightConstraint.constant = 25
+                self.profileImgV.image = nil
+                
+                self.initMenu()
+                for delegate in self.delegates{
+                    delegate.refreshAfterSearch()
+                }
+            }
+            else{
+                Utils.showAlert(title: "SwopIt", msg: "Cannot logout please try again.", vc: self)
+            }
+        }
+    }
+    
     func getAllCategories(){
         if(!Reachability.isConnectedToNetwork()){
             Utils.showAlert(title: "SwopIt", msg: "Pease connect to network.", vc: self)

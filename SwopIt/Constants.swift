@@ -40,6 +40,7 @@ class Constants: NSObject {
     static let GET_SWOPPERS_BY_DISTANCE = BASE_URL + "Swoppers"
     static let GET_SWOP_HISTORY = BASE_URL + "AcceptedSwopsByUser"
     static let GET_NEW_MESSAGE_COUNT = BASE_URL + "GetNewMessagesCount"
+    static let LOGOUT_URL = BASE_URL + "logout"
     
     static let KEY_RESPONSE = "Response"
     static let KEY_RESPONSE_CODE = "ResponseCode"
