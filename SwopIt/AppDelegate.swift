@@ -140,7 +140,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any]) {
         print(userInfo)
-        if let type = userInfo["Type"], let recvr = userInfo["SenderUser"], let senderId = userInfo["SenderId"]{
+        if let type = userInfo["aps"], let recvr = userInfo["SenderUser"], let senderId = userInfo["SenderId"]{
             if(application.applicationState == .background){
                 if(Utils.isUserLoggedin()){
                     if(type as! String == "Chat"){
@@ -160,15 +160,23 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any],
                      fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
         print(userInfo)
-        if let type = userInfo["Type"], let recvr = userInfo["SenderUser"], let senderId = userInfo["SenderId"]{
-            if(application.applicationState == .background){
+        if let type = userInfo["aps"], let recvr = userInfo["gcm.notification.SenderUser"], let senderId = userInfo["gcm.notification.SenderId"]{
+            print(application.applicationState.rawValue)
+            if(UIApplication.shared.applicationState == .background || UIApplication.shared.applicationState == .inactive){
                 if(Utils.isUserLoggedin()){
-                    if(type as! String == "Chat"){
-                        let rootVC = self.window?.rootViewController as! MainTabsViewController
-                        rootVC.presentChatVCFromNotifications(userId: Utils.getLoggedInUserId(), userId2: senderId as! String, receiver: recvr as! String)
-                    }else if(type as! String == "Swap request"){
-                        let rootVC = self.window?.rootViewController as! MainTabsViewController
-                        rootVC.goToInboxFromNotifications()
+                    let aps = type as! [String:Any]
+                    if let alertValue = aps["alert"]{
+                        let alert = alertValue as! [String:Any]
+                        if let alertValue = alert["title"]{
+                            let title = alertValue as! String
+                            if(title.lowercased() == "chat" || title.lowercased() == "message"){
+                                let rootVC = self.window?.rootViewController as! MainTabsViewController
+                                rootVC.presentChatVCFromNotifications(userId: Utils.getLoggedInUserId(), userId2: senderId as! String, receiver: recvr as! String)
+                            }else if(title.lowercased() == "swap request"){
+                                let rootVC = self.window?.rootViewController as! MainTabsViewController
+                                rootVC.goToInboxFromNotifications()
+                            }
+                        }
                     }
                 }
             }else{
